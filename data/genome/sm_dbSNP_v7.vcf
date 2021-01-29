@@ -1,0 +1,2473 @@
+##fileformat=VCFv4.2
+##INFO=<ID=ReverseComplementedAlleles,Number=0,Type=Flag,Description="The REF and the ALT alleles have been reverse complemented in liftover since the mapping from the previous reference to the current one was on the negative strand.">
+##INFO=<ID=SwappedAlleles,Number=0,Type=Flag,Description="The REF and the ALT alleles have been swapped in liftover due to changes in the reference. It is possible that not all INFO annotations reflect this swap, and in the genotypes, only the GT, PL, and AD fields have been modified. You should check the TAGS_TO_REVERSE parameter that was used during the LiftOver to be sure.">
+##INFO=<ID=dbSNPBuildID,Number=1,Type=Integer,Description="dbSNP version">
+##contig=<ID=SM_V7_1,length=88881357>
+##contig=<ID=SM_V7_ZW,length=88385488>
+##contig=<ID=SM_V7_3,length=50458499>
+##contig=<ID=SM_V7_2,length=48130368>
+##contig=<ID=SM_V7_4,length=47279781>
+##contig=<ID=SM_V7_5,length=25256119>
+##contig=<ID=SM_V7_6,length=24989083>
+##contig=<ID=SM_V7_7,length=19288021>
+##contig=<ID=SM_V7_W001,length=935871>
+##contig=<ID=SM_V7_W002,length=793022>
+##contig=<ID=SM_V7_W003,length=513415>
+##contig=<ID=SM_V7_ZWU001,length=289827>
+##contig=<ID=SM_V7_W004,length=279311>
+##contig=<ID=SM_V7_5H001,length=220032>
+##contig=<ID=SM_V7_2H001,length=200280>
+##contig=<ID=SM_V7_ZWU002,length=173519>
+##contig=<ID=SM_V7_2H002,length=165532>
+##contig=<ID=SM_V7_U001,length=160195>
+##contig=<ID=SM_V7_W005,length=149646>
+##contig=<ID=SM_V7_ZWH001,length=146669>
+##contig=<ID=SM_V7_ZWU003,length=146658>
+##contig=<ID=SM_V7_W006,length=144428>
+##contig=<ID=SM_V7_2H003,length=138432>
+##contig=<ID=SM_V7_2H004,length=133822>
+##contig=<ID=SM_V7_2H005,length=133597>
+##contig=<ID=SM_V7_U002,length=131157>
+##contig=<ID=SM_V7_2H006,length=125934>
+##contig=<ID=SM_V7_4H001,length=124601>
+##contig=<ID=SM_V7_W007,length=122025>
+##contig=<ID=SM_V7_7H001,length=110230>
+##contig=<ID=SM_V7_ZWH002,length=103925>
+##contig=<ID=SM_V7_4H002,length=102981>
+##contig=<ID=SM_V7_W009,length=101813>
+##contig=<ID=SM_V7_U003,length=100028>
+##contig=<ID=SM_V7_2H007,length=99744>
+##contig=<ID=SM_V7_6H001,length=96912>
+##contig=<ID=SM_V7_5H003,length=96552>
+##contig=<ID=SM_V7_5H002,length=96260>
+##contig=<ID=SM_V7_7H002,length=95647>
+##contig=<ID=SM_V7_3H001,length=95497>
+##contig=<ID=SM_V7_U004,length=89015>
+##contig=<ID=SM_V7_2H008,length=85875>
+##contig=<ID=SM_V7_W011,length=79719>
+##contig=<ID=SM_V7_6H002,length=77628>
+##contig=<ID=SM_V7_2H009,length=76736>
+##contig=<ID=SM_V7_5H004,length=76371>
+##contig=<ID=SM_V7_5H005,length=73321>
+##contig=<ID=SM_V7_5H006,length=72929>
+##contig=<ID=SM_V7_5H008,length=71870>
+##contig=<ID=SM_V7_5H007,length=71845>
+##contig=<ID=SM_V7_ZWH003,length=66674>
+##contig=<ID=SM_V7_6H003,length=64465>
+##contig=<ID=SM_V7_W008,length=64370>
+##contig=<ID=SM_V7_1H002,length=64117>
+##contig=<ID=SM_V7_1H001,length=64018>
+##contig=<ID=SM_V7_6H004,length=63063>
+##contig=<ID=SM_V7_5H009,length=62792>
+##contig=<ID=SM_V7_ZWH004,length=62045>
+##contig=<ID=SM_V7_4H003,length=61159>
+##contig=<ID=SM_V7_W010,length=61066>
+##contig=<ID=SM_V7_3001,length=60127>
+##contig=<ID=SM_V7_ZWH007,length=59995>
+##contig=<ID=SM_V7_ZWH005,length=59940>
+##contig=<ID=SM_V7_7H003,length=59764>
+##contig=<ID=SM_V7_ZWH006,length=59443>
+##contig=<ID=SM_V7_ZWH008,length=59083>
+##contig=<ID=SM_V7_5H010,length=58595>
+##contig=<ID=SM_V7_ZWH009,length=57825>
+##contig=<ID=SM_V7_1H003,length=56863>
+##contig=<ID=SM_V7_ZWU004,length=56281>
+##contig=<ID=SM_V7_5H011,length=55767>
+##contig=<ID=SM_V7_U005,length=55760>
+##contig=<ID=SM_V7_6H006,length=55696>
+##contig=<ID=SM_V7_W013,length=55224>
+##contig=<ID=SM_V7_2H010,length=55153>
+##contig=<ID=SM_V7_6H007,length=54162>
+##contig=<ID=SM_V7_U006,length=53943>
+##contig=<ID=SM_V7_W014,length=53884>
+##contig=<ID=SM_V7_6H005,length=53532>
+##contig=<ID=SM_V7_7H004,length=53144>
+##contig=<ID=SM_V7_4H004,length=51325>
+##contig=<ID=SM_V7_1H004,length=50418>
+##contig=<ID=SM_V7_6H008,length=49591>
+##contig=<ID=SM_V7_W012,length=49306>
+##contig=<ID=SM_V7_1H005,length=49039>
+##contig=<ID=SM_V7_5H012,length=48833>
+##contig=<ID=SM_V7_2H011,length=48623>
+##contig=<ID=SM_V7_U007,length=48619>
+##contig=<ID=SM_V7_W016,length=48598>
+##contig=<ID=SM_V7_1H007,length=48179>
+##contig=<ID=SM_V7_W019,length=47855>
+##contig=<ID=SM_V7_1H008,length=47782>
+##contig=<ID=SM_V7_1H006,length=47641>
+##contig=<ID=SM_V7_1001,length=47563>
+##contig=<ID=SM_V7_3H002,length=47115>
+##contig=<ID=SM_V7_ZWH010,length=47057>
+##contig=<ID=SM_V7_4H006,length=46612>
+##contig=<ID=SM_V7_5H013,length=46444>
+##contig=<ID=SM_V7_ZWH011,length=46325>
+##contig=<ID=SM_V7_3H003,length=45846>
+##contig=<ID=SM_V7_ZWU005,length=45821>
+##contig=<ID=SM_V7_4H007,length=45807>
+##contig=<ID=SM_V7_U008,length=45745>
+##contig=<ID=SM_V7_W018,length=45515>
+##contig=<ID=SM_V7_ZWH012,length=45489>
+##contig=<ID=SM_V7_6H009,length=45418>
+##contig=<ID=SM_V7_4H005,length=45362>
+##contig=<ID=SM_V7_ZWH013,length=44693>
+##contig=<ID=SM_V7_1H009,length=44509>
+##contig=<ID=SM_V7_1H010,length=44155>
+##contig=<ID=SM_V7_3H004,length=44047>
+##contig=<ID=SM_V7_3H005,length=43874>
+##contig=<ID=SM_V7_6H010,length=43669>
+##contig=<ID=SM_V7_4H008,length=43640>
+##contig=<ID=SM_V7_ZWH014,length=43015>
+##contig=<ID=SM_V7_5H014,length=42658>
+##contig=<ID=SM_V7_ZWH015,length=42645>
+##contig=<ID=SM_V7_1002,length=42467>
+##contig=<ID=SM_V7_4H009,length=42081>
+##contig=<ID=SM_V7_U009,length=42047>
+##contig=<ID=SM_V7_3H006,length=42046>
+##contig=<ID=SM_V7_1H012,length=41993>
+##contig=<ID=SM_V7_1H011,length=41975>
+##contig=<ID=SM_V7_2H012,length=41866>
+##contig=<ID=SM_V7_6H012,length=41854>
+##contig=<ID=SM_V7_U010,length=41849>
+##contig=<ID=SM_V7_1H013,length=41780>
+##contig=<ID=SM_V7_4H011,length=41493>
+##contig=<ID=SM_V7_1H014,length=41416>
+##contig=<ID=SM_V7_1H015,length=40908>
+##contig=<ID=SM_V7_6H011,length=40838>
+##contig=<ID=SM_V7_W017,length=40810>
+##contig=<ID=SM_V7_3H007,length=40564>
+##contig=<ID=SM_V7_U011,length=40472>
+##contig=<ID=SM_V7_1H016,length=40279>
+##contig=<ID=SM_V7_1H017,length=40268>
+##contig=<ID=SM_V7_4H010,length=40207>
+##contig=<ID=SM_V7_1H018,length=40149>
+##contig=<ID=SM_V7_3H008,length=40122>
+##contig=<ID=SM_V7_4H013,length=39978>
+##contig=<ID=SM_V7_1H019,length=39836>
+##contig=<ID=SM_V7_4H012,length=39780>
+##contig=<ID=SM_V7_W021,length=39689>
+##contig=<ID=SM_V7_W020,length=39584>
+##contig=<ID=SM_V7_4H014,length=39472>
+##contig=<ID=SM_V7_ZWH016,length=38948>
+##contig=<ID=SM_V7_4H015,length=38788>
+##contig=<ID=SM_V7_4H016,length=38587>
+##contig=<ID=SM_V7_4H017,length=38450>
+##contig=<ID=SM_V7_ZWH017,length=38440>
+##contig=<ID=SM_V7_3H009,length=38307>
+##contig=<ID=SM_V7_6H014,length=38274>
+##contig=<ID=SM_V7_4H018,length=37883>
+##contig=<ID=SM_V7_3H010,length=37877>
+##contig=<ID=SM_V7_ZWH018,length=37872>
+##contig=<ID=SM_V7_6H013,length=37868>
+##contig=<ID=SM_V7_7H005,length=37848>
+##contig=<ID=SM_V7_4H019,length=37718>
+##contig=<ID=SM_V7_7H006,length=37701>
+##contig=<ID=SM_V7_2H014,length=37647>
+##contig=<ID=SM_V7_5H015,length=37561>
+##contig=<ID=SM_V7_ZWH019,length=37354>
+##contig=<ID=SM_V7_2H013,length=37161>
+##contig=<ID=SM_V7_1H022,length=37152>
+##contig=<ID=SM_V7_1H021,length=37064>
+##contig=<ID=SM_V7_4H021,length=37030>
+##contig=<ID=SM_V7_1H020,length=36937>
+##contig=<ID=SM_V7_4H020,length=36932>
+##contig=<ID=SM_V7_ZWH020,length=36899>
+##contig=<ID=SM_V7_2H015,length=36894>
+##contig=<ID=SM_V7_1H023,length=36773>
+##contig=<ID=SM_V7_5H017,length=36476>
+##contig=<ID=SM_V7_5H016,length=36405>
+##contig=<ID=SM_V7_2H016,length=36330>
+##contig=<ID=SM_V7_3H011,length=36265>
+##contig=<ID=SM_V7_ZWH021,length=36095>
+##contig=<ID=SM_V7_2H018,length=35981>
+##contig=<ID=SM_V7_U013,length=35842>
+##contig=<ID=SM_V7_2H017,length=35746>
+##contig=<ID=SM_V7_2H019,length=35649>
+##contig=<ID=SM_V7_1H025,length=35346>
+##contig=<ID=SM_V7_1H024,length=35172>
+##contig=<ID=SM_V7_4H022,length=35161>
+##contig=<ID=SM_V7_ZWU007,length=35161>
+##contig=<ID=SM_V7_4H023,length=34814>
+##contig=<ID=SM_V7_3H012,length=34678>
+##contig=<ID=SM_V7_ZWH023,length=34659>
+##contig=<ID=SM_V7_4H024,length=34614>
+##contig=<ID=SM_V7_1H028,length=34539>
+##contig=<ID=SM_V7_ZWH022,length=34526>
+##contig=<ID=SM_V7_1003,length=34508>
+##contig=<ID=SM_V7_1H026,length=34385>
+##contig=<ID=SM_V7_1H027,length=34385>
+##contig=<ID=SM_V7_7H007,length=34225>
+##contig=<ID=SM_V7_4H025,length=34158>
+##contig=<ID=SM_V7_U012,length=34139>
+##contig=<ID=SM_V7_1H029,length=34050>
+##contig=<ID=SM_V7_5H018,length=33970>
+##contig=<ID=SM_V7_5H019,length=33947>
+##contig=<ID=SM_V7_2H020,length=33720>
+##contig=<ID=SM_V7_2H021,length=33608>
+##contig=<ID=SM_V7_6H015,length=33584>
+##contig=<ID=SM_V7_1H030,length=33580>
+##contig=<ID=SM_V7_4H026,length=33480>
+##contig=<ID=SM_V7_ZWH024,length=33395>
+##contig=<ID=SM_V7_3H014,length=33058>
+##contig=<ID=SM_V7_3H013,length=33002>
+##contig=<ID=SM_V7_5H020,length=32808>
+##contig=<ID=SM_V7_ZWH027,length=32768>
+##contig=<ID=SM_V7_ZWH026,length=32761>
+##contig=<ID=SM_V7_W022,length=32622>
+##contig=<ID=SM_V7_ZWH028,length=32463>
+##contig=<ID=SM_V7_1H032,length=32437>
+##contig=<ID=SM_V7_1H031,length=32322>
+##contig=<ID=SM_V7_3H015,length=32223>
+##contig=<ID=SM_V7_W015,length=32211>
+##contig=<ID=SM_V7_4H027,length=32106>
+##contig=<ID=SM_V7_1H033,length=32089>
+##contig=<ID=SM_V7_1H034,length=32011>
+##contig=<ID=SM_V7_6H016,length=31954>
+##contig=<ID=SM_V7_1H035,length=31914>
+##contig=<ID=SM_V7_ZWH025,length=31897>
+##contig=<ID=SM_V7_4H028,length=31895>
+##contig=<ID=SM_V7_2H022,length=31872>
+##contig=<ID=SM_V7_ZWH029,length=31552>
+##contig=<ID=SM_V7_3H016,length=31458>
+##contig=<ID=SM_V7_4H030,length=31218>
+##contig=<ID=SM_V7_2H023,length=31190>
+##contig=<ID=SM_V7_1H037,length=31153>
+##contig=<ID=SM_V7_2H024,length=31091>
+##contig=<ID=SM_V7_3002,length=30987>
+##contig=<ID=SM_V7_1H036,length=30661>
+##contig=<ID=SM_V7_ZWU006,length=30575>
+##contig=<ID=SM_V7_U014,length=30537>
+##contig=<ID=SM_V7_4H031,length=30457>
+##contig=<ID=SM_V7_4H029,length=30376>
+##contig=<ID=SM_V7_ZWH030,length=30210>
+##contig=<ID=SM_V7_4H032,length=30174>
+##contig=<ID=SM_V7_1H039,length=29978>
+##contig=<ID=SM_V7_2H027,length=29949>
+##contig=<ID=SM_V7_2H026,length=29857>
+##contig=<ID=SM_V7_7H010,length=29794>
+##contig=<ID=SM_V7_3H017,length=29772>
+##contig=<ID=SM_V7_1H041,length=29619>
+##contig=<ID=SM_V7_7H009,length=29420>
+##contig=<ID=SM_V7_1H038,length=29346>
+##contig=<ID=SM_V7_2H025,length=29284>
+##contig=<ID=SM_V7_6H017,length=29216>
+##contig=<ID=SM_V7_ZWH031,length=29206>
+##contig=<ID=SM_V7_7H011,length=28989>
+##contig=<ID=SM_V7_5H021,length=28933>
+##contig=<ID=SM_V7_ZWH032,length=28863>
+##contig=<ID=SM_V7_1H040,length=28404>
+##contig=<ID=SM_V7_ZWH033,length=28372>
+##contig=<ID=SM_V7_5H022,length=28341>
+##contig=<ID=SM_V7_3H018,length=28220>
+##contig=<ID=SM_V7_4H033,length=28174>
+##contig=<ID=SM_V7_3H019,length=28128>
+##contig=<ID=SM_V7_ZWH035,length=27859>
+##contig=<ID=SM_V7_2H028,length=27630>
+##contig=<ID=SM_V7_ZWH036,length=27602>
+##contig=<ID=SM_V7_5H024,length=27421>
+##contig=<ID=SM_V7_5H023,length=27391>
+##contig=<ID=SM_V7_ZWH034,length=27291>
+##contig=<ID=SM_V7_6H018,length=27194>
+##contig=<ID=SM_V7_5H025,length=27052>
+##contig=<ID=SM_V7_1H043,length=27049>
+##contig=<ID=SM_V7_1H042,length=27046>
+##contig=<ID=SM_V7_ZWH037,length=26959>
+##contig=<ID=SM_V7_MITO,length=26917>
+##contig=<ID=SM_V7_4H034,length=26690>
+##contig=<ID=SM_V7_ZWH038,length=26672>
+##contig=<ID=SM_V7_6H019,length=26539>
+##contig=<ID=SM_V7_3H020,length=26491>
+##contig=<ID=SM_V7_6H020,length=26434>
+##contig=<ID=SM_V7_4H035,length=26278>
+##contig=<ID=SM_V7_7H012,length=26102>
+##contig=<ID=SM_V7_1H044,length=25493>
+##contig=<ID=SM_V7_ZWU008,length=25483>
+##contig=<ID=SM_V7_4H036,length=25454>
+##contig=<ID=SM_V7_ZWH039,length=25205>
+##contig=<ID=SM_V7_6H022,length=24884>
+##contig=<ID=SM_V7_6H021,length=24849>
+##contig=<ID=SM_V7_7H013,length=24818>
+##contig=<ID=SM_V7_4H037,length=24441>
+##contig=<ID=SM_V7_7H014,length=24420>
+##contig=<ID=SM_V7_1H045,length=24196>
+##contig=<ID=SM_V7_ZWH041,length=24020>
+##contig=<ID=SM_V7_W023,length=23771>
+##contig=<ID=SM_V7_6H023,length=23718>
+##contig=<ID=SM_V7_3H021,length=23120>
+##contig=<ID=SM_V7_7H008,length=23019>
+##contig=<ID=SM_V7_6H024,length=22726>
+##contig=<ID=SM_V7_ZWH042,length=22423>
+##contig=<ID=SM_V7_6H025,length=22193>
+##contig=<ID=SM_V7_2H030,length=22176>
+##contig=<ID=SM_V7_4H038,length=22085>
+##contig=<ID=SM_V7_ZWH043,length=22068>
+##contig=<ID=SM_V7_7H015,length=21833>
+##contig=<ID=SM_V7_2H029,length=21793>
+##contig=<ID=SM_V7_ZWH044,length=21747>
+##contig=<ID=SM_V7_ZWH045,length=21661>
+##contig=<ID=SM_V7_1H046,length=21617>
+##contig=<ID=SM_V7_2H031,length=21130>
+##contig=<ID=SM_V7_2H032,length=20166>
+##contig=<ID=SM_V7_ZWH040,length=19870>
+##contig=<ID=SM_V7_2H033,length=19679>
+##contig=<ID=SM_V7_U015,length=19106>
+##contig=<ID=SM_V7_2H034,length=18656>
+##contig=<ID=SM_V7_5H026,length=18095>
+##contig=<ID=SM_V7_1H047,length=16498>
+##contig=<ID=SM_V7_U016,length=15741>
+##contig=<ID=SM_V7_2H035,length=14904>
+##contig=<ID=SM_V7_2H036,length=14512>
+##contig=<ID=SM_V7_3H022,length=13856>
+##contig=<ID=SM_V7_6H026,length=13844>
+##contig=<ID=SM_V7_6H027,length=13614>
+##contig=<ID=SM_V7_ZWH046,length=13151>
+##contig=<ID=SM_V7_5H027,length=8381>
+##contig=<ID=SM_V7_U017,length=1307>
+##dbSNP_BUILD_ID=1
+##fileDate=20130120
+##reference=file:/master/fcheval/analyses/07%20-%20Virulence%20project/2020-04-04%20SmLE%20x%20SmBRE%20(after%20doom)/data/genome/schistosoma_mansoni.PRJEA36577.WBPS14.genomic.fa
+##source=Welcome Trust Sanger Institute (genotype.candidate.01.12.txt - Jason Tsai)
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+SM_V7_1	1079827	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	1097561	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	1101058	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	2653285	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	2762230	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	2766430	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	3304027	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	4080957	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	5310666	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	5329965	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	5604638	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	7326282	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	8873130	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	8875474	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	9852584	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	10036024	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	11397792	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	11579868	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	13519107	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	14018997	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	15274263	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	15650852	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	16061092	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	16190503	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	16967105	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	17499041	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	17962118	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	17963412	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	18667604	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	20354251	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	20417951	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	21319511	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	22868555	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	23787276	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	24054726	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	24239358	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	24708436	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	24962711	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	26171290	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	26187361	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	26227198	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	27029458	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	29390720	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	29878242	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	30809315	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	33805220	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	35532105	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	39437378	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	40937003	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	42651381	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	43427897	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	43954732	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	45592449	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	45761428	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	46721285	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	47583662	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	49882808	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	49941744	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	49946774	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	50025749	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	51596743	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	51739155	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	51802532	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	54642058	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	54657132	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	55976674	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	58523745	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	59570180	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	60011157	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	64269606	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	64271229	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	64271694	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	64515060	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65548225	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65549080	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65550732	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65551109	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65551217	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65551845	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	65576602	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	65586872	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	67182449	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	67380626	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	67413428	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	67414516	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	67416489	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	67756758	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	67773386	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	67774484	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	67801931	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	69113582	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	69113655	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	69113977	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	69114571	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	69116958	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	69117342	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	69120926	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	69126290	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	69128939	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	69131435	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	69136663	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	69286132	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	70948598	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	71284011	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	71430263	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	71430369	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	71437537	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	71437777	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	71847514	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	72042596	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	72464073	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	73050728	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	73349957	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	73895422	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	75318871	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	76749821	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	76918822	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	76929100	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	76930410	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	77797944	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	77861419	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	78591542	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	78600427	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	79773104	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	79802613	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	80834833	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	81175628	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	81673115	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_1	83213872	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	83479784	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	83520710	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	83636652	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	84403034	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	84403160	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	84403408	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	84403506	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	84403830	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	84404100	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	84405079	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	84406552	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	84410377	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	84410805	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_1	84411120	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_1	84411417	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	84411996	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_1	86961006	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	86961148	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_1	87511565	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	778813	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	1083699	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	1581782	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	1664974	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	2419666	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	2442910	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	2443618	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	2462500	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	2799809	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	3552876	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	5811048	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	5933667	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	6289351	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	6959541	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7001256	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7056491	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7056602	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7056930	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7057208	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7057271	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7057447	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7057583	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7057853	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7058097	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7121385	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7121502	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7124068	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7157753	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7223406	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7223733	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7229762	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	7267663	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	7733746	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	9294639	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	10246092	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	46896916	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	46969177	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	49162747	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	53605914	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	53765728	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	56553383	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	56744985	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	57824182	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	59694339	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	60094297	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	60439208	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	61281518	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	61991378	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	62046471	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	62046582	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	62948785	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	62960843	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63020451	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63020908	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63021841	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63022792	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63023260	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63023644	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63026531	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63026759	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63027155	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63027368	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63027679	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63028456	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63028661	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63028998	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63029220	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63029272	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63030996	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63031267	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63031769	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63032491	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63032547	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63032833	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63032939	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63033227	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63033574	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63033671	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63033906	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63036429	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63036609	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63036886	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63037055	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63037173	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63037235	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63037420	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63038182	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63038345	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63039344	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63039482	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63039642	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63039942	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63039997	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63040125	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63040245	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63040802	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63041491	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63041811	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63042683	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63042874	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63044182	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63047386	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63053076	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63053149	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63055949	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63059844	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	63060140	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	64103736	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	65728076	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	66360177	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	67473645	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	67835868	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	67916891	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	67948112	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	68219227	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	68317435	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	68340496	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	68360734	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	68737565	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	69268193	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	69566043	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	69957040	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	69981171	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	70278677	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	70401713	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71449551	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	71525599	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71550396	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71554116	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71554394	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71554740	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71557684	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71557747	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71558246	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71558949	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71561671	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	71698943	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73258618	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73259452	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73265667	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73266013	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73267802	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73271966	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73272522	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73272714	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73835642	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	73980459	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	74010017	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	74070880	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	74100209	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	74953494	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	75088279	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	76061958	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	76622887	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	77029513	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	77562982	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	79329976	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	80731579	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	80810646	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	81081707	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	83813587	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	83817696	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	83897115	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	83909188	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	84003351	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	84015480	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_ZW	85474173	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_ZW	85593158	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	553206	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	553369	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	2121368	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	2873672	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	4289969	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	4899783	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	5058818	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	5542533	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	6306421	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_3	7094578	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	11684718	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	11823444	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	12588116	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	16518530	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	16692105	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	17049492	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	17245502	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	17284168	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	18327003	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	19644851	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_3	19876008	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	21160888	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	21406559	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	21541129	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	21541502	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	22777735	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	23245136	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	23592610	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_3	23709625	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	24630161	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	27121358	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	27121895	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	27122741	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	27140883	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	27142182	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	27143661	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	27153105	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	27153823	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	27505829	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	28203820	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	28747095	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	29054026	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	29759838	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30436557	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30466662	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30562148	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30580497	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30584127	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30981867	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30992076	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	30996244	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31012433	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31018005	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31023186	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31034687	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31062367	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31062607	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31068411	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31073886	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31087257	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31160318	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31175499	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31190064	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31194972	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31201396	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31201730	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31204127	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31238082	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31241099	LE	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31264193	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31288815	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31291833	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31292030	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	31294839	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	32394398	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	32451851	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	34670286	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	34856905	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	35183347	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	35308392	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35309668	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35868089	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35881181	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35973008	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35973135	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35974510	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35980275	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	35996968	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003217	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003349	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003432	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003485	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003566	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36003750	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36004109	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36004333	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36004621	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36004743	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36004884	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005059	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005113	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005210	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005794	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005882	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36005933	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36007014	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36007112	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36025133	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36026029	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36026203	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36032955	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36033075	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36033548	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36037153	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36037545	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36037692	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36037872	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36037924	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36038105	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36038191	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36038242	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36038462	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36038734	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36048560	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36049137	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36050256	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36054833	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36059917	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36062148	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36062418	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36063663	LE	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36074240	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36074307	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36074834	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36078869	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36085487	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36095468	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36236787	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36238760	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36239002	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36239422	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36241532	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36245294	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36245378	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36245730	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36245995	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36271461	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36271673	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36273004	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36273112	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36273328	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36277658	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36277791	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36277911	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36278113	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36278651	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36283199	LE	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36283281	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36283455	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36283618	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36489770	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	36542191	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_3	36689080	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	37027165	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	37100117	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	38250609	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	39761710	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	39816578	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	42835115	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	43269537	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	43445634	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	44116541	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3	45541894	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46912787	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46914895	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46915916	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46919404	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46921146	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46925479	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46934348	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_3	46934816	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	46963330	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46963595	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46964099	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46966927	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46978773	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46978846	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46985550	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	46994775	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	47134592	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_3	48961621	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_3	49726950	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	2481451	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	2539771	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	2546663	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	2570545	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	3010925	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	3147480	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	4204741	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	4356028	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	4382413	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	5582526	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	7143632	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	8589020	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	9400982	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	9428258	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	9432570	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	9433288	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	9752126	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	10629237	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	11664643	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	11703917	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	11886853	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	11986271	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	12243256	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	13232826	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	14327776	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	14516860	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	15473905	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	17724988	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	18680328	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	18688611	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	18690316	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	18724871	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	20720281	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	20877472	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	23860759	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	23874733	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	28164684	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	28238409	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	28506089	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	28592139	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	30653636	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	30987654	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	31333640	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	32004470	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	32179821	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	32313666	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	32327416	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	33087067	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	33603292	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	34502619	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	35428488	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	35629217	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36091334	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36144052	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36153570	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36172758	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36235417	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36250741	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36250844	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36250959	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251106	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251212	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251371	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251549	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251652	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251725	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251778	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251861	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251917	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36251998	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252049	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252106	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252165	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252269	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252341	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252423	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252517	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252731	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252794	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252928	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36252983	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253059	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253185	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253351	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253417	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253468	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253542	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253628	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253683	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36253929	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254089	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254147	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254210	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254355	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254413	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254531	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254611	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254681	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254737	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254812	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254878	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36254969	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255023	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255106	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255157	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255297	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255451	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255515	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255592	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255698	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255793	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36255890	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36256242	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36256470	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36256650	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36303157	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36332823	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2	36334309	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36334475	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36334784	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36397689	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	36438829	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	36642916	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37571612	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37583625	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37591406	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37592033	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37592704	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37593144	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775145	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775282	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775333	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775452	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775519	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775591	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775701	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775796	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775861	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37775977	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776033	HR	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776171	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776447	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776497	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776872	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37776950	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781352	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781424	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781478	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781528	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781628	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781695	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781776	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781833	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781896	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37781949	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782036	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782097	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782147	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782202	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782466	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782519	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782573	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782630	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782683	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782766	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782816	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782895	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37782949	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783030	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783087	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783147	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783248	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783426	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37783477	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37785754	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37785846	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37785928	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786016	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786073	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786129	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786240	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786350	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786492	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37786992	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787065	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787130	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787211	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787278	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787373	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787434	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787486	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787536	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787648	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787742	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37787814	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37788864	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789057	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789358	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789411	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789495	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789550	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789939	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37789998	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37791174	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37791291	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37843799	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	37862574	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	37914445	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	37917554	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	37917676	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	37947055	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	37958370	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_2	38892997	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2	41257791	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	42849890	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	42899172	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2	45579787	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2	45579949	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	22236	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	467313	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	467412	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	467883	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	468532	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	470527	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	478320	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	491987	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	492056	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	492537	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	492655	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	493892	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	494342	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	527353	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	567740	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	567969	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	1062258	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	3527769	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	3527864	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	4083807	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	4648742	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	4784330	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	5205036	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	7843764	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	7865551	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	8841150	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	9351218	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	10090282	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	10091245	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	10091924	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	10093092	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	13079653	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	15830752	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	15925263	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19104857	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19105040	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19164826	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19293546	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	19293788	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	19368723	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19400065	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19435217	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	19435422	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	19460871	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	19810859	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	19836814	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	21246680	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	22420505	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	22506870	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	22656543	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	23607870	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	23730513	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	24475205	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	24774123	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	31393622	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	33947227	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	33985438	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	34503372	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	34521849	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	34815427	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	36219621	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	36506781	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	36687308	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	38548821	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	38551652	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	40680588	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	40770792	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	40826791	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	41397953	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	41723139	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44055834	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	44055925	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	44056103	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_4	44056174	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44056568	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44056749	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44058374	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44060972	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	44070954	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44071158	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4	44179319	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44180181	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	44197411	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	44207200	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44237605	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44242190	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44245359	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44246465	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44247873	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44248599	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44249630	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44268638	LE	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4	44278122	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_4	44279526	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_4	46818177	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	20752	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	21259	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	23568	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	25759	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	86525	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	199151	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	706970	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	1245151	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	1698724	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	1774427	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	1809509	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	1922496	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	2164714	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	4466360	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	4710370	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	4816885	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5055350	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5055586	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5055963	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5056605	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5060406	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5060627	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5062747	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5062841	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5064176	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5064419	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5065648	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5066849	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069112	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069226	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069382	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069602	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069780	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069850	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5069927	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5070072	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5070146	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5070573	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5070991	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5071214	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5071866	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5072184	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5072899	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5072960	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5073363	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5073540	LE	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5073691	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5073892	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5074420	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5075299	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5076538	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5262684	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	5262857	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	5273594	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5274074	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5274592	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5371639	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5373567	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5374444	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	5395582	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6341459	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6380450	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6380722	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6387859	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6607993	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	6952749	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7248921	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7249599	LE	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7249909	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7274187	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	7274508	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	7274839	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	7275907	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	7277123	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	7277574	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	7277944	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	7576183	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7810759	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	7816276	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	10641018	LE	A	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	10925393	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	11018870	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	11545239	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	12174999	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	13621045	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	14355119	LE	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	14725470	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	15274483	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	15274739	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17171035	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17197440	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17308912	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17383491	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17432919	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17434528	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17459418	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17473700	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17473852	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17473997	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17493766	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17497779	HR	T	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17524281	HR	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17614559	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17633235	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	17677571	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17678156	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17678217	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17678305	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17679100	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17679368	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17679563	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17679759	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17681178	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	17681294	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	17681641	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17692160	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17714384	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17715653	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17720882	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	17784715	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	17784943	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17785019	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17785087	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	17785414	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	17785986	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786227	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786330	HR	G	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786398	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786495	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786550	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786621	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786710	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786771	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17786847	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17787258	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17787414	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17788106	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17789001	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	17879544	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	17958637	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5	18348214	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5	20581559	HR	T	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	21528578	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	22031351	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	22031952	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	22047062	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	22049238	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	22050563	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_5	22050627	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_5	24209389	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	24366303	LE	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	24435658	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5	24548741	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	363098	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	822977	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	823944	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1178830	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1206994	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1218024	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1221661	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1228296	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1618558	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1621415	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1622054	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1625346	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1625403	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1643309	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1645393	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1645597	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1645672	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1648918	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1662991	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1665683	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1671302	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1672024	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1682187	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1688119	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1690839	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1696345	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1696730	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1696808	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1700354	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1706228	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1711892	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1712300	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1712631	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1715802	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1720444	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1721577	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1721736	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1722390	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1722500	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1722556	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1723619	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1723954	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1724279	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1724365	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1726818	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1730061	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1730301	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1743374	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1744323	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1744761	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1751760	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1776600	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1778666	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1794204	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1796392	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1807223	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1807830	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1813761	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1815101	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1815324	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1817487	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1817753	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1817886	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1818297	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1818377	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1819290	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1820632	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1821197	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1823828	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1825514	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1826128	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1827214	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1828047	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1828295	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1828414	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1829993	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1830178	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1830401	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1831664	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1831762	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1832526	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1832834	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1834844	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1835232	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1836758	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1837795	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1837928	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1838093	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1838198	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1839756	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1840282	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1840864	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1841695	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1842408	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1843557	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1844895	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1845049	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1846416	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1846626	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1846712	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1846823	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1846932	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1847074	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1848003	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1848145	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1848684	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1848774	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1849371	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1849590	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1849824	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1850331	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1850388	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1852074	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1854358	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1855668	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1856424	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1856636	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1856714	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1856974	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1857719	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1858884	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1860899	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1866419	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1866813	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1867077	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1867570	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1867696	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1868405	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1868467	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1869630	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1870219	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1875851	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1876165	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1877280	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1877380	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1882273	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1885577	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1892608	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	1894721	LE	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	1897395	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	1910635	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1913596	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1921708	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1923092	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1926003	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1939139	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1940700	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1943903	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1944067	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	1944311	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	1947288	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1950484	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1951146	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1952643	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1952796	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	1952979	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1970212	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1970322	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	1977968	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2004309	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2010216	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2010431	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2011034	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2011193	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2011446	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2012998	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2013052	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2013185	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2013752	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2014140	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2017914	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018155	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018318	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018399	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018642	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018843	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2018914	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2019496	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2019546	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2022136	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024373	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024438	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024497	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024606	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024742	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024913	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2024983	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2025531	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2025645	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2025731	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2025860	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2030130	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2031281	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2031416	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2031685	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2031749	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2035863	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2036365	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2036871	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2037768	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2041766	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2044330	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2045337	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2045511	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2045704	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2048800	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2064254	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2086578	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2093102	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2093438	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2095358	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2097723	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2113040	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2130657	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2155738	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2163635	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2164251	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2169715	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2169856	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2173917	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2177933	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2184549	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2185601	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2189908	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2196587	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2197064	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2202060	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2205501	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2212916	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2214951	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2224282	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2251484	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2269898	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2270473	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2270780	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2270855	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2270962	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2272669	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2273376	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2276396	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2276467	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2277374	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2277604	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2277881	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2279111	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2279815	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2279887	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2280169	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2281215	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2281399	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2281622	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2284205	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2284498	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2285120	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2285518	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2286065	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2286414	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2286528	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2287086	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2288347	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2289275	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2289338	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2289720	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2290433	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2290491	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2290657	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2290795	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2290959	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2293584	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2294231	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2294584	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2294696	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2295070	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2296310	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2298635	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2298940	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2308748	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2310316	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2315703	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2316035	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2321284	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2325157	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2331830	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2333649	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2337444	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2338703	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2338961	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2339116	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2340012	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2341820	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2341943	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2342039	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2342104	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2344188	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2350385	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2356337	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2356561	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2359463	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2359811	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2363438	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2364928	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2372001	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2372060	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2376481	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2383464	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2386017	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2386696	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2387705	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2395751	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2396255	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2396883	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2398280	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2403836	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2405241	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2407179	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2407239	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2407375	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2408842	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2410249	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2410376	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2410435	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2412712	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2415373	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2415736	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2421163	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2422254	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2426132	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2429506	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2432299	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2440510	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2447760	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2457859	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2466582	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2467023	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2469359	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2470384	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2471377	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2473048	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2473538	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2475338	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2475850	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2481154	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2481868	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2482883	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2489826	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2494989	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2498143	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2499185	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2499268	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2500264	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2500389	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2503812	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2503868	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2504071	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2504497	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2504789	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2512420	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2513382	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2515127	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2515204	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2515542	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2515608	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2515882	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2516229	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2519045	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2520056	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2520122	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2524712	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2524940	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2525428	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2527098	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2533595	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2537463	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2540156	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2542367	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2544398	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2546172	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2560281	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2561780	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2579777	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2582848	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2598349	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2600824	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2600991	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2601159	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2601236	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2606439	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2609205	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2611321	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2611716	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2612524	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2613360	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2620514	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2622135	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2622797	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2623332	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2624186	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2625913	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2626208	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2629644	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2631514	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2640012	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2640916	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2651996	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2654967	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2663094	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2668242	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2692827	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2693420	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2693481	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2696238	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2696465	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2697168	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2697218	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2697481	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2698032	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2698820	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2709201	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2709930	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2713279	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2715392	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2716073	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2717012	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2724986	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2740380	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2743026	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2744129	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2744206	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2745080	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2745479	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2745683	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2745814	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2745876	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2746060	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2746237	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2746447	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2746531	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2746594	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2747103	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2747183	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2747504	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2747906	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2748038	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2748115	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2748539	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2748647	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2749249	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2749329	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2749423	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2749633	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2751602	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2752799	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2753118	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2766320	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2807388	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2808840	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2811626	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2811720	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2811783	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2812186	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2812509	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2812827	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2814542	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2825739	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2829186	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2829511	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2832284	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2832489	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2833833	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2857693	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2882504	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2918576	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2920387	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2921453	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2923077	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2923798	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2931776	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2946995	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2949610	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2949960	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2951158	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2957273	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2958208	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2964550	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	2965804	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2970743	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2975701	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	2985624	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	2990309	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	2993910	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3006603	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3007515	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3013096	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3015273	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3018876	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3021970	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3032071	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3035997	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3037246	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3040921	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3044482	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3050241	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3060979	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3064285	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3069555	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3070766	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3075190	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3079385	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3079541	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3080328	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3080743	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3080809	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3080902	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3080961	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3082874	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3083048	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3100295	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3100524	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3100846	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3102325	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3102917	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3107247	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3108461	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3110302	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3110422	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3113576	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3115175	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3119158	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3119411	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3119677	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3120132	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3122817	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3125528	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3126033	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3139836	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3141418	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3157936	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3169461	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3170735	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3171340	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3174889	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3193954	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3279387	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3281605	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3282247	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3283174	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3283733	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3288297	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3288925	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3290242	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3291330	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3291705	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3292665	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3292725	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3297566	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3301038	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3301932	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3302014	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3302199	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3306279	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3306332	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3306824	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3308007	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3308762	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3308897	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3309484	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3309651	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3310609	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3312183	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3312363	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3312493	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3320837	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3328024	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3328399	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3332749	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3333101	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3334266	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3334768	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3335283	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3336119	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3339355	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3343492	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3344287	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3345326	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3345407	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3346186	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3351381	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3356928	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3361390	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3362048	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3363990	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3367435	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3368029	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3368341	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3368485	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3369036	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3369219	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3369287	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3369373	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3369613	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3370136	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3371044	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3371367	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3372495	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3376402	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3376832	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3377115	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3381509	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3386722	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3387445	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3394805	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3403978	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3405770	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3406259	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3406384	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3423234	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3429163	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3432122	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3432454	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3434444	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3438565	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3443159	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3443815	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3444751	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3447146	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3449718	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3451794	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3452410	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3453208	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3453966	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3454840	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3455567	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3457486	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3458798	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3460162	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3461363	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3461501	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3461642	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3462335	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3462831	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3467923	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3468391	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3470511	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3473089	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3473484	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3473659	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3474790	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3475375	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3476349	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3477802	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3478708	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3478872	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3482292	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3482897	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3483010	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3485600	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3486157	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3486757	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3487010	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3488669	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3495666	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3495792	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3496325	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3496488	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3499101	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3499679	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3499740	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3501110	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3501389	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3502568	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3502831	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3506551	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3506632	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3506843	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3506911	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3507076	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3507191	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3507278	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3508200	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3511246	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3511538	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3511666	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3513266	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3513438	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3513523	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3514429	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3514512	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3514630	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3514949	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3515038	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3515233	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3515683	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3516321	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3516810	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3516915	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3517139	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3517192	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3517490	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3518705	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3518767	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3519526	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3519649	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3521438	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3521842	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3522291	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3527541	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3527785	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3527987	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3539069	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3539178	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3539259	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3539605	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3539693	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3540348	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3540399	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3540843	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3540905	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3541103	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3541729	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3547122	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3547561	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3547697	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3548846	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3549225	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3549419	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3549893	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3550341	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3550722	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3551053	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3551421	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3551651	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3551887	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3554589	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3555109	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3555748	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3556722	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3556822	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3557712	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3557845	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3558798	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3559896	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3564426	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3565635	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3566220	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3566643	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3567093	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3567162	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3570343	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3570607	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571335	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571398	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571652	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571705	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571809	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3571869	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3572167	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3572578	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3572761	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3573200	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3573860	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3577362	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3577497	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3580303	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3584548	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3584812	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3584882	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3585131	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3585335	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3585625	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3585755	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3587429	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3588775	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3588828	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3590263	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3590511	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3592332	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3601413	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3603972	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3604106	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3604721	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3605075	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3605895	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3606350	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3606655	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3607879	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3609457	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3609578	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3610169	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3610849	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3612376	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3612985	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3614476	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3614646	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3614727	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3615192	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3615869	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3616305	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3616469	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3616708	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617123	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617451	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617505	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617691	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617813	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3617880	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3618005	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3618117	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3618184	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3619158	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3620861	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3655850	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3656005	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3656165	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3657897	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3659838	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3661503	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3663538	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3664478	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3664587	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3667799	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3667903	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3672077	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3672207	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3672358	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3678614	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3681534	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3682307	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3682424	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3683792	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3684325	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3690042	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3693610	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3694296	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3694416	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3705139	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3705317	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3705790	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3707881	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3709669	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3714689	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3715427	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3715580	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3715924	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3715979	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3716207	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3716466	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3716944	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3717038	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3717136	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3717502	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3718400	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3724625	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3727406	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3738441	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3739188	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3740274	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3740357	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3741662	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3742439	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3747126	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3749338	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3749807	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3751515	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3753056	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3755954	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3761887	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3762788	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3764476	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3764922	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3766815	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3767309	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3767473	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3769825	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3772142	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3791256	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3791309	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3791440	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3792172	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3796522	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3798416	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3805856	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3810150	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3818211	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3823997	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3824953	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3825168	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3825494	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3825596	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3831170	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3835698	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3836179	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3845997	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3850156	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3856590	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3859025	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3863530	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3864710	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3865615	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3865707	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3866900	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3867115	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3867358	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3872320	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3881472	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3882911	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3892126	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3893762	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3894026	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3894152	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3894415	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3895925	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3897150	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3903441	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3908577	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3909083	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3909151	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3909858	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3910873	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3914303	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3914731	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3916670	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3916816	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3916884	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3917315	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3918406	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3920567	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3920643	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3922037	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3949531	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3950323	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3958242	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3959116	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	3962254	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3962782	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3963119	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3968604	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	3978534	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	3989234	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	3990283	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4000460	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4004895	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4008604	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4011271	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4011661	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4012769	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4013125	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4015331	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4029132	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4029702	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4030574	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4030868	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4032918	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4033904	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4034050	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4034891	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4042229	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4042302	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4042445	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4043090	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4047301	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4050799	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4051263	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4052164	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4052319	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4052911	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4053033	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4054065	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4063404	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4066467	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4067951	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4071437	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4075284	LE	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4077618	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4078718	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4084221	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4092975	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4112100	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4115601	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4115748	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4139631	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4148165	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4149224	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4154263	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4170311	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4170580	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4171679	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4177028	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4184432	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4187448	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4196538	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4210314	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4243049	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4244032	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4244209	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4247888	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4250207	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4251277	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4252278	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4254757	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4261544	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4261601	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4261774	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4262327	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4262534	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4264088	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4264269	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4264860	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4265305	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4265375	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4265628	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4266818	LE	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4275218	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4279538	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4280154	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4283413	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4299690	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4304032	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4333307	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4335592	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	4341172	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4342819	HR	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4344259	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4347734	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4351232	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4353672	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	4353841	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4353904	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	4353981	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4355211	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4355669	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	4780118	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	8743466	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	8895279	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10034278	HR	A	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10034332	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10155555	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10722731	HR	A	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10742285	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10747708	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10748053	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	10857031	LE	C	G	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	11703777	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	11815649	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	11860822	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	12241305	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	12351786	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	12939202	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	13329319	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	13852140	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6	15144292	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	15144347	HR	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	15176089	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	15194675	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	16325075	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	16326281	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	18342750	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	19598433	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	19683805	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	19802900	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	19826131	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20035489	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20044535	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20046236	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	20046431	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20131514	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20189586	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20189667	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20189768	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	20189848	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	20190141	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20190328	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20190443	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20190586	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20190745	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20191055	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	20191110	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	20191236	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	20191289	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	20194057	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	20231338	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	20333230	HR	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	21006858	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	21242261	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	21370024	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	21506491	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	22187100	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	22604485	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	22611457	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	23046212	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6	23047145	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	23049687	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6	23051291	HR	G	C	.	PASS	dbSNPBuildID=1
+SM_V7_6	24381654	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6	24386426	LE	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_7	5817303	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_7	7720141	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_7	8049302	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	8686195	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	9754914	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	10581905	HR	C	G	.	PASS	dbSNPBuildID=1
+SM_V7_7	12576729	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_7	13437746	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_7	13801510	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_7	14721003	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_7	14725329	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_7	14725717	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_7	14742479	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_7	14748692	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_7	15211773	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_7	15908430	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	15908741	HR	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	15924116	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_7	16044221	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2H001	11235	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2H001	12740	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2H001	92685	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2H001	93333	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_2H003	52063	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52141	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52220	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52276	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52335	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52392	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52446	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52516	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52577	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52635	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52744	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_2H003	52826	LE	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_4H002	3277	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_U003	90157	HR	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_W011	13365	HR	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_6H002	4369	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	11469	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	11842	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	12592	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	13646	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	13816	HR	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	15862	HR	T	A	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	24956	HR	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	34012	HR	C	T	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	37053	LE	A	T	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	44150	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	44706	LE	T	G	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	47156	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	47429	HR	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_6H002	50031	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	18486	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	18581	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	18663	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	18835	LE	G	T	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	18920	LE	G	A	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	19063	HR	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5H012	19212	LE	T	C	.	PASS	dbSNPBuildID=1
+SM_V7_3H004	12895	LE	C	A	.	PASS	dbSNPBuildID=1
+SM_V7_4H010	18486	LE	A	G	.	PASS	dbSNPBuildID=1
+SM_V7_5H019	7409	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	7771	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	7980	LE	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	8397	LE	G	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	8963	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9043	HR	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9156	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9280	HR	T	C	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9478	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9833	HR	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	9891	LE	C	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_5H019	14410	LE	G	A	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1
+SM_V7_4H035	16409	LE	A	C	.	PASS	dbSNPBuildID=1
+SM_V7_6H021	19511	LE	C	T	.	PASS	ReverseComplementedAlleles;dbSNPBuildID=1

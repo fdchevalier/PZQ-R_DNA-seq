@@ -1,0 +1,8 @@
+.ipynb_checkpoints/
+.snakemake/
+data/**
+!data/genome/
+!data/genome/sm_dbSNP_v7.vcf
+status/
+results/
+graphs/
