@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: PZQ-R_GWAS_CNV.R
-# Version: 0.0
+# Version: 0.1
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2018-03-12
-# Modified in: 
+# Modified in: 2019-10-17
 
 
 
@@ -11,6 +11,7 @@
 # Comments #
 #==========#
 
+# v0.1 - 2019-10-17: adapt script to the whole genome sequencing data
 # v0.0 - 2018-03-12: creation
 
 
@@ -27,19 +28,13 @@ exp.tag <- c("Exp1","Exp2")
 
 BAMFolder <- "../1-Alignment/data/" 
 
+if(! dir.exists("graphs/")) { dir.create("graphs/") }
 
-segments  <- read.table("~/data/sm_exons/sma_agilent_baits.v7.0.chr_reorderd.bed", sep="\t", as.is=TRUE)
+#segments  <- read.table("~/data/sm_exons/sma_agilent_baits.v7.0.chr_reorderd.bed", sep="\t", as.is=TRUE)
 
 mychr <- c(paste0("Chr_",seq(1,7)), "Chr_W")
 
 n.cores <- detectCores()
-
-if (n.cores > 1) { n.cores <- round(n.cores*2/3) } else {n.cores <- 0}
-
-# Test on the complete BAM
-segments.chr  <- segments[ grep(paste0(mychr,"$",collapse="|"),segments[,1]) , ]
-
-gr <- GRanges(segments.chr[,1],IRanges(segments.chr[,2],segments.chr[,3]))
 
 # To store call table
 call.tb.ls <- vector("list", length(exp.tag))
@@ -51,13 +46,10 @@ for (t in exp.tag) {
     BAMFiles <- list.files(BAMFolder, pattern=paste0(t,".*bam$"), recursive=TRUE, full.name=TRUE)
 
     # Get read counts for the group
-    X  <- getSegmentReadCountsFromBAM(BAMFiles, GR=gr, parallel=n.cores)
-
-    # Remove redundant markers
-    X <- X[isUnique(X),]
+    X  <- getReadCountsFromBAM(BAMFiles, refSeqNames=mychr, parallel=n.cores)
 
     # Scan for CNVs
-    resCNMOPS <- exomecn.mops(X, parallel=n.cores)
+    resCNMOPS <- referencecn.mops(X[,4:6], X[,1:3], minWidth=3, segAlgorithm="fast", parallel=n.cores)
 
     # Number of regions with CNVs
     nb.regions <- length(resCNMOPS@cnvr)
@@ -71,7 +63,7 @@ for (t in exp.tag) {
         regions <- as.vector(resCNMOPS@cnvr@seqnames)
 
         for (i in 1:nb.regions) {
-            pdf(paste0("graphs/CNV_region_",regions[i],"_",t,".pdf"))
+            pdf(paste0("graphs/CNV_region_",i,"_",regions[i],"_",t,".pdf"))
                 plot(resCNMOPS, which=i, toFile=TRUE)
             dev.off()
         }
@@ -81,11 +73,11 @@ for (t in exp.tag) {
         for (c in regions) {
             call.tb.chr <- call.tb[ grep(c, call.tb[,1]), ]
 
-            for (i in 1:length(BAMFiles)) {
-                call.val <- call.tb.chr[,c(2:3,3+i)]
-                myname   <- paste(strsplit(colnames(call.tb.chr)[3+i], "_")[[1]][1:4], collapse=" ")
+            for (i in 4:ncol(call.tb.chr)) {
+                call.val <- call.tb.chr[,c(2:3,i)]
+                myname   <- paste(strsplit(colnames(call.tb.chr)[i], "_")[[1]][1:4], collapse=" ")
 
-                png(paste0("graphs/CNV_",c,"_",myname,".png"), width=13*72, height=8*72)
+                pdf(paste0("graphs/CNV_",c,"_",myname,".pdf"), width=13, height=8)
                     my.xlim <- max(call.val[,2])
                     my.ylim <- max(abs(call.val[,3]))
                     if (my.ylim < 1) { my.ylim <- 1 }
