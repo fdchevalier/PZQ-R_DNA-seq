@@ -255,7 +255,7 @@ mymat2 <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
     return(x)
 
 }
-mydata2[,9:ncol(mydata2)]  <- mymat2
+mydata2[,5:ncol(mydata2)]  <- mymat2
 colnames(mydata2)[9:ncol(mydata2)] <- colnames(mymat2)
 
 mymat2 <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
@@ -275,25 +275,83 @@ mymat2 <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
 colnames(mymat2) <- lapply(mylib.rep, function(x) paste0(c("AD_REF.", "AD_ALT.", "GQ."), x)) %>% unlist()
 mydata2 <- cbind(mydata2[, 1:4], mymat2)
 
+
+# Combined
+mygroup <- c("Recovered", "Contracted")
+mymat3 <- foreach(i=mygroup, .combine='cbind') %dopar% {
+    
+    # Method recalculating AF accross all the samples
+    mycln.ref <- grep(paste0("AD_REF.*", i), colnames(mydata2))
+    mycln.alt <- grep(paste0("AD_ALT.*", i), colnames(mydata2))
+    mycln.gq <- grep(paste0("GQ.*", i), colnames(mydata2))
+
+    my.ref <- rowMeans(mydata2[, mycln.ref], na.rm = TRUE)
+    my.alt <- rowMeans(mydata2[, mycln.alt], na.rm = TRUE)
+    my.gq  <- rowMeans(mydata2[, mycln.gq ], na.rm = TRUE)
+
+    x <- cbind(my.ref, my.alt, my.gq)
+    return(x)
+}
+colnames(mymat3) <- lapply(mygroup, function(x) paste0(c("AD_REF.", "AD_ALT.", "GQ."), x)) %>% unlist()
+mydata3 <- cbind(mydata2[, 1:4], mymat3)
+
+
+
 # Filter the data with the previous filter parameters
 mydata2 <- mydata2[ apply( cbind(sd.rows, gq.rows, rd.rows), 1, all), ]
+mydata3 <- mydata3[ apply( cbind(sd.rows, gq.rows, rd.rows), 1, all), ]
 
 # Load the data with QTLseqr function using a connection (no disk I/O)
-
-## Load data and pick chromorosomes
 HighBulk <- grep("Recovered", colnames(mydata2), value = TRUE) %>% strsplit(., "\\.") %>% lapply(., function(x) x[2]) %>% unlist %>% unique()
 LowBulk <- grep("Contracted", colnames(mydata2), value = TRUE) %>% strsplit(., "\\.") %>% lapply(., function(x) x[2]) %>% unlist %>% unique()
-df <- importFromTable(file = new_binary_csv, highBulk = HighBulk[1], lowBulk = LowBulk[1], chromList = paste0("SM_V7_", c(1:7, "ZW")))
+binary_csv <- csvConnection(mydata2)
 
+for (i in 1:2) {
+    x <- importFromTable(file = binary_csv, highBulk = HighBulk[i], lowBulk = LowBulk[i], chromList = paste0("SM_V7_", c(1:7, "ZW")))
 
-# Perform analysis
-## G'
-df.q <- runGprimeAnalysis(df)
+    # Perform analysis
+    ## G'
+    y <- runGprimeAnalysis(x)
+
+    # Save object
+    assign(paste0("df", i), x)
+    assign(paste0("df", i, ".q"), y)
+}
+
 
 ## deltaSNP
 ### This on crashes for unknown reason
-#df.f <- runQTLseqAnalysis(df, bulkSize = c(116,116))
+#df2.f <- runQTLseqAnalysis(df, bulkSize = c(116,116))
+
+
+# Combined
+HighBulk <- grep("Recovered", colnames(mydata3), value = TRUE) %>% strsplit(., "\\.") %>% lapply(., function(x) x[2]) %>% unlist %>% unique()
+LowBulk <- grep("Contracted", colnames(mydata3), value = TRUE) %>% strsplit(., "\\.") %>% lapply(., function(x) x[2]) %>% unlist %>% unique()
+binary_csv <- csvConnection(mydata3)
+df3 <- importFromTable(file = binary_csv, highBulk = HighBulk[1], lowBulk = LowBulk[1], chromList = paste0("SM_V7_", c(1:7, "ZW")))
+
+# Perform analysis
+## G'
+df3.q <- runGprimeAnalysis(df3)
 
 
 
+#=========#
+# Figures #
+#=========#
 
+if (! dir.exists(graph_fd)) {dir.create(graph_fd, recursive=TRUE)}
+
+for (i in 1:3) {
+    y <- get(paste0("df", i, ".q"))
+    p1 <- plotQTLStats(SNPset = y, var = "negLog10Pval")
+    p2 <- plotQTLStats(SNPset = y, var = "Gprime", plotThreshold = TRUE, q = 0.01)
+    p3 <- plotQTLStats(SNPset = y, var = "nSNPs")
+    p4 <- plotGprimeDist(SNPset = y, outlierFilter = "Hampel", filterThreshold = 0.1)
+    pdf(paste0(graph_fd, "QTLseqr ", i, ".pdf"), width = 15)
+    print(p1)
+    print(p2)
+    print(p3)
+    print(p4)
+    dev.off()
+}
