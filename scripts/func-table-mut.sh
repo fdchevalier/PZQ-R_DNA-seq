@@ -1,9 +1,9 @@
 #!/bin/bash
 # Title: func-table-mut.sh
-# Version: 1.1
+# Version: 1.2
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2017-09-11
-# Modified in: 2021-01-20
+# Modified in: 2021-06-06
 # Licence : GPL v3
 
 
@@ -20,7 +20,8 @@ aim="Generate mutation table from a VCF file for a given gene. The table contain
 # Versions #
 #==========#
 
-# v1.1 - 2021-01-20: Comment in GFF handled / Computation of total number of alleles/genotypes improved / Output directory for sequences specified
+# v1.2 - 2021-06-06: trap bug corrected
+# v1.1 - 2021-01-20: comment in GFF handled / computation of total number of alleles/genotypes improved / output directory for sequences specified
 # v1.0 - 2019-05-31: bug regarding very long sequence (>32767 bp) corrected / speed improvments / better alignment method (use of awk instead of diff) / bug regarding tag and fasta header corrected
 # v0.6 - 2018-07-19: no pop file sorting anymore but error message instead / bug regarding MNPs coordinates when antisens genes corrected / warning message if MNPs present added / tmp folder creation and removal updated
 # v0.5 - 2018-01-18: complex event (FreeBayes specific) column added
@@ -243,7 +244,7 @@ report_tmp="$tmp_fd/report"
 #============#
 
 # Trap
-trap "clean_up "$tmp_fd" "$report" "$seq_cds_f" "$seq_aa_f"" SIGINT SIGTERM    # Clean_up function to remove tmp files
+trap "clean_up \"$tmp_fd\" \"$report\" \"$seq_cds_f\" \"$seq_aa_f\"" SIGINT SIGTERM    # Clean_up function to remove tmp files
 wait
 
 
