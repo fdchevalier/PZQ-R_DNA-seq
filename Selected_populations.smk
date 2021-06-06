@@ -115,10 +115,11 @@ rule combining:
         genome=GENOME,
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
-        temp("data/calling/{vcf_pfx}.gvcf.gz")
+        vcf=temp("data/calling/{vcf_pfx}.gvcf.gz")
+        tbi=temp("data/calling/{vcf_pfx}.gvcf.gz.tbi")
     run:
         gvcfs=" -V ".join(input.gvcfs)
-        shell('gatk --java-options "-Xmx2g" CombineGVCFs -R "{input.genome}" -V {gvcfs} -D "{input.sites}" -O "{output}"')
+        shell('gatk --java-options "-Xmx2g" CombineGVCFs -R "{input.genome}" -V {gvcfs} -D "{input.sites}" -O "{output.vcf}"')
 
 rule genotype_variants:
     input:
@@ -126,17 +127,18 @@ rule genotype_variants:
         genome=GENOME,
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
-        "data/calling/{vcf_pfx}.{contig}.vcf.gz"
+        vcf=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz")
+        tbi=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz.tbi")
     params:
         contig=r"{contig}"
     shell:
-        'gatk --java-options "-Xmx2g"  GenotypeGVCFs -R "{input.genome}" -V "{input.gvcf}" -D "{input.sites}" -L {params.contig} -O "{output}"'
+        'gatk --java-options "-Xmx2g"  GenotypeGVCFs -R "{input.genome}" -V "{input.gvcf}" -D "{input.sites}" -L {params.contig} -O "{output.vcf}"'
 
 rule merge_variants:
     input:
         vcfs=expand("data/calling/{vcf_pfx}.{contig}.vcf.gz", vcf_pfx=VCF_PFX, contig=CONTIGS)
     output:
-        "data/calling/{vcf_pfx}.vcf.gz"
+        protected("data/calling/{vcf_pfx}.vcf.gz")
     run:
         vcfs=" -I ".join('"{0}"'.format(w) for w in input.vcfs)
         shell('gatk --java-options "-Xmx2g"  MergeVcfs -I {vcfs} -O "{output}"')
