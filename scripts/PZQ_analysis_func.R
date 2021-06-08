@@ -76,6 +76,9 @@ combine.z.pv <- function (x, y) {
 
 # Improvement of file_path_sans_ext from the tools package
 filename <- function (x, compression=FALSE, length=TRUE) {
+    # Clean any folder path first
+    x <- basename(x)
+
     # Test if compression extension
     if (compression) {x <- sub("[.](gz|bz2|xz)$", "", x)}
     # Split name

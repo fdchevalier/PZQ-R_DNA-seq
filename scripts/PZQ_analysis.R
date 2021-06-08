@@ -194,15 +194,21 @@ cat("Generation of polarized allele frequencies\n")
 AF.trsh <- 0.5
 mymat <- foreach(i=1:nrow(mypol.all), .combine='cbind') %dopar% {
     x <- myfreq.data[ ,paste0(mypol.all[i,1],".freq")]
-    x[ which(myfreq.data[,paste0(mypol.all[i,2],".freq")] < AF.trsh) ] <- 1 - myfreq.data[ which(myfreq.data[,paste0(mypol.all[i,2],".freq")] < AF.trsh) , paste0(mypol.all[i,1],".freq") ]
+    mypos <-  which(myfreq.data[,paste0(mypol.all[i,2],".freq")] > AF.trsh)
+    x[ mypos ] <- 1 - myfreq.data[ mypos , paste0(mypol.all[i,1],".freq") ]
     return(x)
 }
 colnames(mymat) <- paste0("pol.freq.", mypol.all[,1], "-", mypol.all[,2])
 myfreq.data <- cbind(myfreq.data, mymat)
 
 # Allele frequency subtraction
+# mymat <- foreach(i=1:nrow(mycomp), .combine='cbind') %dopar% {
+#     x <- myfreq.data[ ,grep(paste0("pol.freq.",mycomp[i,1]),colnames(myfreq.data))] - myfreq.data [ ,grep(paste0("pol.freq.",mycomp[i,2]),colnames(myfreq.data))]
+# }
 mymat <- foreach(i=1:nrow(mycomp), .combine='cbind') %dopar% {
-    x <- myfreq.data[ ,grep(paste0("pol.freq.",mycomp[i,1]),colnames(myfreq.data))] - myfreq.data [ ,grep(paste0("pol.freq.",mycomp[i,2]),colnames(myfreq.data))]
+    y <- rep(1, nrow(myfreq.data))
+    y[myfreq.data[,paste0(mycomp[i,1],".freq")] > AF.trsh] <- -1
+    x <- (myfreq.data[ , paste0(mycomp[i,1], ".freq")] - myfreq.data [ , paste0(mycomp[i,2], ".freq")]) * y
 }
 
 colnames(mymat) <- paste0("sub.freq.", mycomp[,1], "-", mycomp[,2])
@@ -291,7 +297,7 @@ myfreq.data.fltr <- myfreq.data[ apply( cbind(sd.rows, gq.rows, rd.rows), 1, all
 # Report #
 #~~~~~~~~#
 
-res.folder <- paste("results/","sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/", sep="")
+res.folder <- paste0(result_fd, "/sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/")
 if (file.exists(res.folder) == FALSE) {dir.create(res.folder, recursive=TRUE)}
 
 # Summary
@@ -316,10 +322,10 @@ cat(" ", report, " ", sep="\n")
 write(report, paste(res.folder,"report",sep=""))
 
 # Table 
-pv.vec <- grep("pv.*ES.*ER.*ES", colnames(myfreq.data.fltr))
+pv.vec <- grep(paste0("pv", mypv.pat), colnames(myfreq.data.fltr))
 pv.print  <- grep("pv.*", colnames(myfreq.data.fltr))
 gt.vec <- grep("GT", colnames(myfreq.data.fltr))
-frq.vec <- grep("pol.freq.*ER.*ES.*", colnames(myfreq.data.fltr))
+frq.vec <- grep(paste0("pol.freq", myfrq.pat), colnames(myfreq.data.fltr))
 
 
 bf.cor <- 0.05/nrow(myfreq.data.fltr[is.finite(rowSums(as.data.frame(myfreq.data.fltr[,pv.vec]))), ])
@@ -332,9 +338,34 @@ pk.rpt(myfreq.data.fltr[is.finite(rowSums(as.data.frame(myfreq.data.fltr[,pv.vec
 
 
 
-my.qtl <- na.omit(myfreq.data.fltr[ myfreq.data.fltr[,pv.vec] <= bf.cor & myfreq.data.fltr[,1] == "Chr_3", 2])
-bf.lim <- c(my.qtl[1], my.qtl[length(my.qtl)])
 
+a <- myfreq.data.fltr[ ! is.na(myfreq.data.fltr[,pv.vec]), ]
+b <- a[ a[, pv.vec] <= bf.cor, ]
+mychr <- (sapply(b[,1] %>% unique(), function(x) (b[,1] == x) %>% sum()) > nrow(b) * 0.1) %>% which() %>% names() %>% sort
+
+bf.lim <- as.data.frame(matrix(rep(NA, 3 * length(mychr)), nrow = length(mychr)))
+
+for (c in mychr) {
+    my.qtl <- na.omit(myfreq.data.fltr[ myfreq.data.fltr[,pv.vec] <= bf.cor & myfreq.data.fltr[,1] == c, 2])
+
+    # Determining boundaries of the QTL
+    mystretch <- ( (diff(my.qtl) < 500000)) %>% split(., cumsum(c(TRUE, diff(.) < 0)))
+    lg.stretch <- mystretch %>% lapply(., sum) %>% which.max()
+
+    if (lg.stretch == 1) {
+        mystretch.start <- 1
+        mystretch.end   <- length(mystretch[[1]])
+    } else {
+        mystretch.start <- lapply(mystretch[1:(lg.stretch-1)], length) %>% unlist %>% sum() +  sum( (! mystretch[[lg.stretch]]) %>% as.integer()) + 1
+        mystretch.end   <- lapply(mystretch[1:lg.stretch], length) %>% unlist %>% sum()
+    }
+
+
+    bf.lim[ match(c, mychr), ] <- c(c, my.qtl[mystretch.start], my.qtl[mystretch.end])
+}
+
+
+write.table(bf.lim, file = paste0(result_fd, "QTL.bed"), col.names = FALSE, row.names = FALSE, quote = FALSE)
 
 #
 # GFF
@@ -740,3 +771,31 @@ for (j in runmed.vec) {
     mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef)
 }
 
+
+j <- 1
+pv.vec2 <- 47
+sf.vec2 <- 29
+pf.vec2 <- 25
+mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef)
+mygraph(myfreq.data.fltr.r, sf.vec, j, "freq", myfn, -0.75, 0.75, ylab="Difference in allele frequency", def=mydef)
+    
+mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef)
+mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef)
+
+
+mybc <- -log10(0.05/nrow(myfreq.data.fltr.r))
+png(paste0("graphs_HD/", myfn, ".pv-sf.png"), width=72*12, height=72*10)
+layout(matrix(1:2, ncol = 1))
+par(mar=c(5,4,1,1)+0.1) # For small size
+matplot.data(myfreq.data.fltr.r, pv.vec2, "pvalue", abline.h=NULL, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), by.pos=TRUE, type="p")
+matplot.data(myfreq.data.fltr.r, sf.vec2, "freq", ylim.min=-1, ylim.max=1, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab="Difference in allele frequency", by.pos=TRUE, type="p")
+dev.off()
+
+
+mybc <- -log10(0.05/nrow(myfreq.data.fltr.r))
+png(paste0("graphs_HD/", myfn, ".pv-pf.png"), width=72*12, height=72*10)
+layout(matrix(1:2, ncol = 1))
+par(mar=c(5,4,1,1)+0.1) # For small size
+matplot.data(myfreq.data.fltr.r, pv.vec2, "pvalue", abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), by.pos=TRUE, type="p")
+matplot.data(myfreq.data.fltr.r, pf.vec2, "freq", ylim.min=0, ylim.max=1, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab="Polarized allele frequency", by.pos=TRUE, type="p")
+dev.off()
