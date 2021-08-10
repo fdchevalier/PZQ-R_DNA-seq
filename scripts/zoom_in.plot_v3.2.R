@@ -12,7 +12,7 @@ library("rtracklayer")
 library("Sushi")
 
 # v3.2
-source("~/scripts/0-R_functions_repository/Sm.matplot.data.R_v3.2")
+source("functions/Sm.matplot.data.R")
 source("functions/rename_chr.R")
 
 
@@ -96,11 +96,11 @@ my.qtl <- myp.val.tb[myp.val.tb[,3] <= bf.cor & myp.val.tb[,1] == mychr, 2]
 bf.lim <- c(my.qtl[1], my.qtl[which(diff(my.qtl) > 1e6)[1]])
 
 # Sub-sampling
-set.seed(myseed)
-myrow <- rownames(myp.val.tb[myp.val.tb[,3] > bf.cor, ]) %>% sample(., dim(myp.val.tb)[1] * 0.1)
-myrow <- rownames(myp.val.tb[myp.val.tb[,3] <= bf.cor, ]) %>% c(., myrow) %>% as.numeric() %>% sort() %>% as.character()
+# set.seed(myseed)
+# myrow <- rownames(myp.val.tb[myp.val.tb[,3] > bf.cor, ]) %>% sample(., dim(myp.val.tb)[1] * 0.1)
+# myrow <- rownames(myp.val.tb[myp.val.tb[,3] <= bf.cor, ]) %>% c(., myrow) %>% as.numeric() %>% sort() %>% as.character()
 
-myp.val.tb <- myp.val.tb[myrow, ]
+# myp.val.tb <- myp.val.tb[myrow, ]
 myp.val.tb  <- myp.val.tb[! is.na(myp.val.tb[, 3]), ]
 
 
@@ -116,7 +116,7 @@ my.x1b <- 6.5e5
 my.x2b <- 1.25e6
 #my.x2b <- 7.5e5
 
-mygff.genes <- mygff.genes[ mygff.genes[,1] == mychr & mygff.genes[,4] >= bf.lim[1] & mygff.genes[,5] <= bf.lim[2] , ]
+# mygff.genes <- mygff.genes[ mygff.genes[,1] == mychr & mygff.genes[,4] >= bf.lim[1] & mygff.genes[,5] <= bf.lim[2] , ]
 mygff.genes <- mygff.genes[ mygff.genes[,1] == mychr & mygff.genes[,4] >= my.x1 & mygff.genes[,5] <= my.x2 , ]
 
 # Gene expression
@@ -141,7 +141,7 @@ myp.val.tb <- rename_chr_SmV7(myp.val.tb, 1)
 #png(paste0("graphs/zoom_",mychr,"_QTL.png"), width=13*72, height=16*72)
 #pdf(paste0("graphs/zoom_",mychr,"_QTL.pdf"), width=8, height=10, useDingbats=FALSE)
 # pdf(paste0("../graphs/zoom_",mychr,"_QTL_v3.pdf"), width=8, height=10, useDingbats=FALSE)
-png(paste0("../graphs/zoom_",mychr,"_QTL_v3.png"), width=8*72, height=10*72)
+png(paste0("../graphs/zoom_",mychr,"_QTL_v3_2.png"), width=8*72, height=10*72)
     
 #    layout(matrix(1:4, ncol=1), height=c(1,0.7,0.3,1))
     layout(matrix(1:3, ncol=1), height=c(1,0.7,0.3))
