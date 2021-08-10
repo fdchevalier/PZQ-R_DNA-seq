@@ -20,5 +20,9 @@ install_version("tidyr",      version = "1.1.2",   upgrade = "never")
 install_version("locfit",     version = "1.5-9.4", upgrade = "never")
 install_github("bmansfeld/QTLseqr", ref = "5e76137", upgrade = "never")
 
+# Sushi
 install_bioc("3.8/GenomicFeatures", upgrade="never")
 install_bioc("3.8/Sushi",           upgrade="never")
+
+# Data.table
+install_version("data.table", version = "1.14.0", upgrade = "never")
