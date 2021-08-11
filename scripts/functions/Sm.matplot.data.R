@@ -1,8 +1,8 @@
 # Title: Sm.matplot.data.R
-# Version: 3.3
+# Version: 3.4
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2012-08-03
-# Modified in: 2018-01-03
+# Modified in: 2021-08-11
 
 
 
@@ -18,6 +18,7 @@
 # Versions #
 #==========#
 
+# v3.4 - 2021-08-11: correct minor bug regarding arrow.head
 # v3.3 - 2018-01-03: transform data to respect ylim.max if use
 # v3.2 - 2017-08-28: add arrow.head option
 # v3.1 - 2017-06-23: by.pos improved to plot empty chromosomes
@@ -211,7 +212,7 @@ matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=
         arrow.pos <- NULL
 
         for (i in 1:nrow(arrow.head)) {
-            myidx <- grep(arrow.head[i,1], chr.names.all) - 1
+            myidx <- grep(paste0("^", arrow.head[i, 1], "$"), chr.names.all) - 1
             if (myidx == 0) {
                 arrow.pos <- c(arrow.pos, as.numeric(as.character(arrow.head[i,2])))
             } else {
