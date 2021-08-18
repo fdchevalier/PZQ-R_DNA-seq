@@ -34,7 +34,6 @@ rule alignment:
     params:
         rg=r"@RG\tID:{sample}\tPL:illumina\tLB:{sample}\tSM:{sample}"
     shell:
-        'sleep $[ ( $RANDOM % 100 )  + 1 ]s ; '
         'bwa mem -t $(nproc) -M -R "{params.rg}" "{input.genome}" "{input.read1}" "{input.read2}" | samtools sort -@8 -o "{output}" -'
 
 rule indexing1:
@@ -43,7 +42,6 @@ rule indexing1:
     output:
         temp("data/libraries/1-GWAS/{sample}/{sample}_sorted.bam.bai")
     shell:
-        'sleep 1m $[ ( $RANDOM % 200 )  + 1 ]s ; '
         'samtools index "{input}"'
 
 rule mark_duplicates:
@@ -62,7 +60,6 @@ rule indexing2:
     output:
         temp("data/libraries/1-GWAS/{sample}/{sample}_sorted_MD.bam.bai")
     shell:
-        'sleep 1m $[ ( $RANDOM % 200 )  + 1 ]s ; '
         'samtools index "{input}"'
 
 rule bsqr:
@@ -86,7 +83,6 @@ rule indexing3:
     output:
         protected("data/libraries/1-GWAS/{sample}/{sample}_sorted_MD_recal.bam.bai")
     shell:
-        'sleep 1m $[ ( $RANDOM % 200 )  + 1 ]s ; '
         'samtools index "{input}"'
 
 rule stats:
@@ -111,7 +107,6 @@ rule calling:
     output:
         "data/libraries/1-GWAS/{sample}/{sample}.gvcf.gz"
     shell:
-        'sleep 30s $[ ( $RANDOM % 100 )  + 1 ]s ; '
         'gatk --java-options "-Xmx2g" HaplotypeCaller -R "{input.genome}" -I "{input.bam}" -D "{input.sites}" --output-mode EMIT_ALL_ACTIVE_SITES -ERC GVCF -O "{output}"'
 
 rule combining:
@@ -120,19 +115,27 @@ rule combining:
         genome=GENOME,
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
-        vcf=temp("data/calling/{vcf_pfx}.gvcf.gz")
-        tbi=temp("data/calling/{vcf_pfx}.gvcf.gz.tbi")
+        vcf=temp("data/calling/{vcf_pfx}.gvcf.gz"),
     run:
         gvcfs=" --variant ".join(input.gvcfs)
         shell('gatk --java-options "-Xmx2g" CombineGVCFs -R "{input.genome}" --variant {gvcfs} -D "{input.sites}" -O "{output.vcf}"')
 
+rule indexing_gvcf:
+    input:
+        gvcf="data/calling/{vcf_pfx}.gvcf.gz"
+    output:
+        tbi=temp("data/calling/{vcf_pfx}.gvcf.gz.tbi")
+    shell:
+        'gatk --java-options "-Xmx2g" IndexFeatureFile -I "{input.gvcf}"' 
+
 rule genotype_variants:
     input:
         gvcf="data/calling/{vcf_pfx}.gvcf.gz",
+        tbi="data/calling/{vcf_pfx}.gvcf.gz.tbi",
         genome=GENOME,
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
-        vcf=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz")
+        vcf=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz"),
         tbi=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz.tbi")
     params:
         contig=r"{contig}"

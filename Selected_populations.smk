@@ -116,18 +116,26 @@ rule combining:
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
         vcf=temp("data/calling/{vcf_pfx}.gvcf.gz")
-        tbi=temp("data/calling/{vcf_pfx}.gvcf.gz.tbi")
     run:
         gvcfs=" -V ".join(input.gvcfs)
         shell('gatk --java-options "-Xmx2g" CombineGVCFs -R "{input.genome}" -V {gvcfs} -D "{input.sites}" -O "{output.vcf}"')
 
+rule indexing_gvcf:
+    input:
+        gvcf="data/calling/{vcf_pfx}.gvcf.gz"
+    output:
+        tbi=temp("data/calling/{vcf_pfx}.gvcf.gz.tbi")
+    shell:
+        'gatk --java-options "-Xmx2g" IndexFeatureFile -I "{input.gvcf}"' 
+
 rule genotype_variants:
     input:
         gvcf="data/calling/{vcf_pfx}.gvcf.gz",
+        tbi="data/calling/{vcf_pfx}.gvcf.gz.tbi",
         genome=GENOME,
         sites="data/genome/sm_dbSNP_v7.vcf"
     output:
-        vcf=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz")
+        vcf=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz"),
         tbi=temp("data/calling/{vcf_pfx}.{contig}.vcf.gz.tbi")
     params:
         contig=r"{contig}"
