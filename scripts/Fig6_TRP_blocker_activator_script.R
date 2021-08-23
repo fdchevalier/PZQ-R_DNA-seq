@@ -1,36 +1,40 @@
-##-------------------
-## Packages
-##-------------------
+#!/usr/bin/env Rscript
+# Title: Fig6_TRP_blocker_activator_script.R
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Created in: 2020
+# Modified in: 2021-08-23
 
-library("gplots")
-library("plotrix")
-library(doBy)
-library(dplyr)
-#library("Hmisc")
+
+#-------------------
+# Packages
+#-------------------
+
+suppressMessages({
+    library("gplots")
+    library("plotrix")
+    library("doBy")
+    library("dplyr")
+})
 
 #-----------------------------
 # Loading dataset
 #-----------------------------
 
-mydata <- read.csv("TRP_MB2_blocker_MV1_activator_ER_ES.csv", header = TRUE, sep = ",", dec = ".", na.strings = "NA")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+pheno_fd <- "../data/phenotypes/1-Phenotyping_data/"
+graph_fd <- "../graphs/"
+
+mydata <- read.csv(paste0(pheno_fd, "7-TRP_MB2_blocker_MV1_activator_ER_ES.csv"), header = TRUE, sep = ",", dec = ".", na.strings = "NA")
 
 #===========#
 # Functions #
 #===========#
 
-# Line in units
-# source: https://stackoverflow.com/a/30835971
-line2user <- function(line, side) {
-    lh <- par('cin')[2] * par('cex') * par('lheight')
-    x_off <- diff(grconvertX(c(0, lh), 'inches', 'npc'))
-    y_off <- diff(grconvertY(c(0, lh), 'inches', 'npc'))
-    switch(side,
-        `1` = grconvertY(-line * y_off, 'npc', 'user'),
-        `2` = grconvertX(-line * x_off, 'npc', 'user'),
-        `3` = grconvertY(1 + line * y_off, 'npc', 'user'),
-        `4` = grconvertX(1 + line * x_off, 'npc', 'user'),
-        stop("Side must be 1, 2, 3, or 4", call.=FALSE))
-}
+source("functions/line2user.R")
 
 #-----------------------------
 # Datas processing
@@ -52,13 +56,13 @@ for (i in c.type){
         mydata_tmp <- data.ES[data.ES[,6] == i,]
     
         ##Generate the table with means and standard deviation of lactate production for each treatment
-        sum_table_tmp <- summaryBy(lactate_prod ~ TRP_treat, data=mydata_tmp, FUN=c(length,mean,sd))
+        sum_table_tmp <- summaryBy(Lactate_production ~ TRP_treatment, data=mydata_tmp, FUN=c(length,mean,sd))
     
-        ## Rename column lactate_prod.length.length to just N
-        names(sum_table_tmp)[names(sum_table_tmp)=="lactate_prod.length"] <- "N"
+        ## Rename column Lactate_production.length.length to just N
+        names(sum_table_tmp)[names(sum_table_tmp)=="Lactate_production.length"] <- "N"
 
         ## Calculate standard err_tmp of the mean
-        sum_table_tmp$lactate_prod.se <- sum_table_tmp$lactate_prod.sd / sqrt(sum_table_tmp$N)
+        sum_table_tmp$Lactate_production.se <- sum_table_tmp$Lactate_production.sd / sqrt(sum_table_tmp$N)
 
         # Create the list with 3 slots
         res_tmp <- vector("list", 1)
@@ -71,11 +75,9 @@ for (i in c.type){
     
 }
 
-sapply(res.ES, function(x) x[[1]][,3])
 ES_PZQ_DMSO <- sapply(res.ES, function(x) x[[1]][,3]) %>% t()
 colnames(ES_PZQ_DMSO) <- c.treat.colnames
 
-sapply(res.ES, function(x) x[[1]][,5])
 myse_ES_PZQ_DMSO <- sapply(res.ES, function(x) x[[1]][,5]) %>% t()
 colnames(myse_ES_PZQ_DMSO) <- c.treat.colnames
  
@@ -86,13 +88,13 @@ for (i in c.type){
         mydata_tmp <- data.ER[data.ER[,6] == i,]
     
         ##Generate the table with means and standard deviation of lactate production for each treatment
-        sum_table_tmp <- summaryBy(lactate_prod ~ TRP_treat, data=mydata_tmp, FUN=c(length,mean,sd))
+        sum_table_tmp <- summaryBy(Lactate_production ~ TRP_treatment, data=mydata_tmp, FUN=c(length,mean,sd))
     
-        ## Rename column lactate_prod.length.length to just N
-        names(sum_table_tmp)[names(sum_table_tmp)=="lactate_prod.length"] <- "N"
+        ## Rename column Lactate_production.length.length to just N
+        names(sum_table_tmp)[names(sum_table_tmp)=="Lactate_production.length"] <- "N"
 
         ## Calculate standard err_tmp of the mean
-        sum_table_tmp$lactate_prod.se <- sum_table_tmp$lactate_prod.sd / sqrt(sum_table_tmp$N)
+        sum_table_tmp$Lactate_production.se <- sum_table_tmp$Lactate_production.sd / sqrt(sum_table_tmp$N)
 
         # Create the list with 3 slots
         res_tmp <- vector("list", 1)
@@ -105,11 +107,9 @@ for (i in c.type){
     
 }
 
-sapply(res.ER, function(x) x[[1]][,3])
 ER_PZQ_DMSO <- sapply(res.ER, function(x) x[[1]][,3]) %>% t()
 colnames(ER_PZQ_DMSO) <- c.treat.colnames
 
-sapply(res.ER, function(x) x[[1]][,5])
 myse_ER_PZQ_DMSO <- sapply(res.ER, function(x) x[[1]][,5]) %>% t()
 colnames(myse_ER_PZQ_DMSO) <- c.treat.colnames
 
@@ -119,7 +119,7 @@ colnames(myse_ER_PZQ_DMSO) <- c.treat.colnames
 
 ##----Output files names and extension--------#
 
-pdf(file="Barplot_lactate_MB2_MV1_ES_ER_3.pdf", width=8, height=10, useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Fig. 6 - Barplot_lactate_MB2_MV1_ES_ER_3.pdf"), width=8, height=10, useDingbats=FALSE)
 
 layout(matrix(c(1,2),2,1), heights= c(0.5,0.5))
 
@@ -129,7 +129,7 @@ layout(matrix(c(1,2),2,1), heights= c(0.5,0.5))
 
 par(mar=c(5,5,2,2))
 
-barplot2(ES_PZQ_DMSO, col=mycolor.type, main= "PZQ-ES", beside=TRUE, ylab="Lactate production (nmol/h)", ylim=c(0,60), cex.axis=1, cex.main=1.5, cex.lab=1.2, cex=1, las=2, names.arg=c("", "", "", "", ""), plot.ci=TRUE, ci.u=ES_PZQ_DMSO+myse_ES_PZQ_DMSO, ci.l=ES_PZQ_DMSO-myse_ES_PZQ_DMSO, ci.width=0.1, ci.lwd=1.4, lwd=1.4, legend.text = c("+PZQ", "+DMSO"), args.legend = list(cex=0.75,x = "topright"), xpd=TRUE)
+barplot2(ES_PZQ_DMSO, col=mycolor.type, main= "PZQ-ES", beside=TRUE, ylab="Lactate production (nmol/h)", ylim=c(0,60), cex.axis=1, cex.main=1.5, cex.lab=1.2, cex=1, las=2, names.arg=c("", "", "", "", ""), plot.ci=TRUE, ci.u=ES_PZQ_DMSO+myse_ES_PZQ_DMSO, ci.l=ES_PZQ_DMSO-myse_ES_PZQ_DMSO, ci.width=0.1, ci.lwd=1.4, lwd=1.4, legend.text = c("+PZQ", "+DMSO")) 
 
 
 #---Add statistical analysis on the plot---#

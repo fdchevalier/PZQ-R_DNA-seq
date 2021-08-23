@@ -1,36 +1,40 @@
+#!/usr/bin/env Rscript
+# Title: FigS7_Invivo_ES_ER.R
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Created in: 2020
+# Modified in: 2021-08-23
+
+
 #-------------------
 # Loading packages
 #-------------------
 
-library("gplots")
-library("plotrix")
-#library("Hmisc")
+suppressMessages({
+    library("gplots")
+    library("plotrix")
+})
 
 
 #-----------------------------
 # Loading dataset
 #-----------------------------
 
-data_mice <-read.table("2020-02-26_In_vivo_PZQ_resistance_exp_2.csv", header = TRUE, sep = ",", dec = ".", na.strings = "NA")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+pheno_fd <- "../data/phenotypes/1-Phenotyping_data/"
+graph_fd <- "../graphs/"
+
+data_mice <-read.table(paste0(pheno_fd, "6-In_vivo_PZQ_resistance_exp.csv"), header = TRUE, sep = ",", dec = ".", na.strings = "NA")
 
 
 #===========#
 # Functions #
 #===========#
 
-# Line in units
-## source: https://stackoverflow.com/a/30835971
-line2user <- function(line, side) {
-    lh <- par('cin')[2] * par('cex') * par('lheight')
-    x_off <- diff(grconvertX(c(0, lh), 'inches', 'npc'))
-    y_off <- diff(grconvertY(c(0, lh), 'inches', 'npc'))
-    switch(side,
-        `1` = grconvertY(-line * y_off, 'npc', 'user'),
-        `2` = grconvertX(-line * x_off, 'npc', 'user'),
-        `3` = grconvertY(1 + line * y_off, 'npc', 'user'),
-        `4` = grconvertX(1 + line * x_off, 'npc', 'user'),
-        stop("Side must be 1, 2, 3, or 4", call.=FALSE))
-}
+source("functions/line2user.R")
 
 #-----------------------------
 # Data processing
@@ -52,7 +56,7 @@ data.mice.ER.C <- data_mice[data_mice[,1] == "SmLE-PZQ-ER" & data_mice[,10] == 0
 # Figures
 #---------
 
-pdf(file="Invivo_ES_ER_4.pdf", width=8, height=8, useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Supp. Fig. 7 - Invivo_ES_ER_4.pdf"), width=8, height=8, useDingbats=FALSE)
 
 layout(matrix(c(1,2,3,4),2,2))
 

@@ -1,28 +1,41 @@
+#!/usr/bin/env Rscript
+# Title: FigS1_Single_worm_lactate_data_sorted.R
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Modified in: 2017
+# Created in: 2021-08-09
+
+
 #-------------------
 # Packages
 #-------------------
 
-library(latticeExtra)
-library("gplots")
-library("plotrix")
+suppressMessages({
+    library("gplots")
+    library("plotrix")
+})
 
 #----------------
 # Datas
 #----------------
 
-mydata <- read.csv("Single_worm_lactate_data_sorted.csv", dec=".", sep=",", header=T)
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+pheno_fd <- "../data/phenotypes/1-Phenotyping_data/"
+graph_fd <- "../graphs/"
+
+mydata <- read.csv(paste0(pheno_fd, "2-Single_worm_lactate_data_sorted.csv"), dec=".", sep=",", header=T)
 
 #---------
 # Figures
 #---------
 
-pdf(file="Lactate_sorting_data.pdf", width=6, height=6,useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Supp. Fig. 1 - Lactate_sorting_data.pdf"), width=6, height=6,useDingbats=FALSE)
 
 #layout margins
 par(mar=c(5,5,1,2)) 
-
-#cumulative plot
-ecdfplot(mydata[,11])
 
 #sorting then plotting the data according to lactate production
 mydata_sorted <- mydata[order(mydata[,11]),]

@@ -1,15 +1,32 @@
+#!/usr/bin/env Rscript
+# Title: Fig4_IC_curves_script_ES_ER.R
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Created in: 2018
+# Modified in: 2021-08-23
+
+
 #-------------------
 # Packages
 #-------------------
 
-library(doBy)
-library(drc)
+suppressMessages({
+    library("doBy")
+    library("drc")
+})
 
 #----------------
 # Datas
 #----------------
 
-mydata <- read.csv("Lactate_prod_LE_PZQ_ER_ES_IC50.csv", header=T, sep=",", dec=".")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+pheno_fd <- "../data/phenotypes/1-Phenotyping_data/"
+graph_fd <- "../graphs/"
+
+mydata <- read.csv(paste0(pheno_fd, "5-Lactate_prod_LE_PZQ_ER_ES_IC50.csv"), header=T, sep=",", dec=".")
 
 
 #-----------------
@@ -101,25 +118,14 @@ for (i in 1:length(res_IC)) {
 }
 
 
-#data_ER <- res[[1]][[1]]
-#data_ES <- res[[2]][[1]]
-#x <- res[[1]][[2]][,1]
-#y <- res[[1]][[2]][,6]
-#y2 <- res[[2]][[2]][,6]
- 
-#sd_ER <- res[[1]][[2]][,5]
-#sd_ES <- res[[2]][[2]][,5]
-
 #---------
 # Figures
 #---------
 
 #Plots the IC 50 curves
-pdf(file="IC_curves_ER_ES.pdf", width=8, height=8,useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Fig. 4 - IC_curves_ER_ES.pdf"), width=8, height=8,useDingbats=FALSE)
 
 par(mar=c(5,5,4,2)) #layout margins
-
-#mymax <- lapply(res, function(x) {max(x[[2]][,3])}) %>% unlist() %>% max() %>% round()
 
 for (i in 1:length(res)) {
     
@@ -133,13 +139,6 @@ for (i in 1:length(res)) {
     arrows(res[[i]][[2]][,1], res[[i]][[2]][,6]-res[[i]][[2]][,5], res[[1]][[2]][,1], res[[i]][[2]][,6]+res[[i]][[2]][,5], code=3, length=0.02, angle = 90, col= myclr[i])
     
 }
-
-#plot(data_ER, type = "all", xlab="PZQ concentration (µg/mL)", ylab="Lactate production (%)", ylim=c(0,100), col="#aa7b4d", pch=19, cex.lab=1.5, axes=FALSE, bty="n" )
-#arrows(x, y-sd_ER, x, y+sd_ER, code=3, length=0.02, angle = 90, col="#aa7b4d")
-
-#plot(data_ES, type ="all", add=T, col="#3bc188", pch=19, axes=FALSE)
-#arrows(x, y2-sd_ES, x, y2+sd_ES, code=3, length=0.02, angle = 90, col="#3bc188")
-    
 
 ##----Axes---------##
 axis(1, at=c(0.1,0.3,0.9,2.7,8.1,24.3,72.9), cex.axis=1.1)

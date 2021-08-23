@@ -24,5 +24,11 @@ install_github("bmansfeld/QTLseqr", ref = "5e76137", upgrade = "never")
 install_bioc("3.8/GenomicFeatures", upgrade="never")
 install_bioc("3.8/Sushi",           upgrade="never")
 
-# Data.table
+# DRC
+install_version("foreign", version = "0.8-76",  upgrade = "never")
+install_version("nloptr",  version = "1.2.1",  upgrade = "never")
+install_version("drc",     version = "3.0-1",  upgrade = "never")
+
+# Misc
 install_version("data.table", version = "1.14.0", upgrade = "never")
+install_version("doBy",       version = "4.6-3",  upgrade = "never")

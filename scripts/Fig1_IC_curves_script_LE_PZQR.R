@@ -1,15 +1,32 @@
+#!/usr/bin/env Rscript
+# Title: Fig1_IC_curves_script_LE_PZQR.R
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Createed in: 2017
+# Modified in: 2021-08-23
+
+
 #-------------------
 # Packages
 #-------------------
 
-library(doBy)
-library(drc)
+suppressMessages({
+    library("doBy")
+    library("drc")
+})
 
 #----------------
 # Datas
 #----------------
 
-mydata <- read.table("IC50_LE_PZQR.tsv", header=T, sep="\t", dec=".")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+pheno_fd <- "../data/phenotypes/1-Phenotyping_data/"
+graph_fd <- "../graphs/"
+
+mydata <- read.table(paste0(pheno_fd, "1-IC50_LE_PZQR.tsv"), header=T, sep="\t", dec=".")
 
 
 #-----------------
@@ -19,7 +36,7 @@ mydata <- read.table("IC50_LE_PZQR.tsv", header=T, sep="\t", dec=".")
 # function from the drc package - IC50 fitting curve
 myfct <- "LL.3"
  
-mypop <- unique(mydata$type)
+mypop <- unique(mydata$Type)
 
 ## Create a color vector
 myclr <- NULL
@@ -41,19 +58,19 @@ for (i in mypop){
     mydata_tmp <- mydata[mydata[,5] == i,]
     
     ##Generate the table with means and standard deviation of the percentage of worm mortality for each PZQ each dose and each population of worms
-    sum_table_tmp <- summaryBy(perc_worm_mortality ~ PZQ_dose, data=mydata_tmp, FUN=c(length,mean,sd))
+    sum_table_tmp <- summaryBy(Perc_worm_mortality ~ PZQ_dose, data=mydata_tmp, FUN=c(length,mean,sd))
  
-    ## Rename column perc_worm_mortality.length to just N
-    names(sum_table_tmp)[names(sum_table_tmp)=="perc_worm_mortality.length"] <- "N"
+    ## Rename column Perc_worm_mortality.length to just N
+    names(sum_table_tmp)[names(sum_table_tmp)=="Perc_worm_mortality.length"] <- "N"
 
     ## Calculate standard err_tmp of the mean
-    sum_table_tmp$perc_worm_mortality.se <- sum_table_tmp$perc_worm_mortality.sd / sqrt(sum_table_tmp$N)
+    sum_table_tmp$Perc_worm_mortality.se <- sum_table_tmp$Perc_worm_mortality.sd / sqrt(sum_table_tmp$N)
 
     #Fitting the data with the model for IC50 curves
-    myfit_tmp <- drm(perc_worm_mortality.mean ~ PZQ_dose, data = sum_table_tmp, fct = get(myfct)())
+    myfit_tmp <- drm(Perc_worm_mortality.mean ~ PZQ_dose, data = sum_table_tmp, fct = get(myfct)())
     
     #Fitting the data with the model to ED50 values
-    myfit_ED50_tmp <- drm(perc_worm_mortality.mean ~ PZQ_dose, data = sum_table_tmp, fct = LL.3(fixed = c(NA, 100, NA)))
+    myfit_ED50_tmp <- drm(Perc_worm_mortality.mean ~ PZQ_dose, data = sum_table_tmp, fct = LL.3(fixed = c(NA, 100, NA)))
     
     # Create the list with 3 slots
     res_tmp <- vector("list", 3)
@@ -96,7 +113,7 @@ for (i in 1:length(res_IC)) {
 #---------
 
 #Plots the IC 50 curves
-pdf(file="IC_curves_LE_PZQR.pdf", width=8, height=8,useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Fig. 1 - IC_curves_LE_PZQR.pdf"), width=8, height=8,useDingbats=FALSE)
 
 par(mar=c(5,5,4,2)) #layout margins
 

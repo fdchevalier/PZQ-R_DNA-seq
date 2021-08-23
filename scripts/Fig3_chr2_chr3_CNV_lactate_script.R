@@ -1,36 +1,40 @@
-##-------------------
-## Packages
-##-------------------
+#!/usr/bin/env Rscript
+# Title: Fig3_chr2_chr3_CNV_lactate_script.R 
+# Version: 0.1
+# Author: Winka Le Clec'h <winkal@txbiomed.org>
+# Created in: 2020
+# Modified in: 2021-08-23
 
-library("gplots")
-library("plotrix")
-library(doBy)
-library(dplyr)
-#library("Hmisc")
+
+#-------------------
+# Packages
+#-------------------
+
+suppressMessages({
+    library("gplots")
+    library("plotrix")
+    library("doBy")
+    library("dplyr")
+})
 
 #-----------------------------
 # Loading dataset
 #-----------------------------
 
-mydata <- read.csv("TRP_chr2_chr3_CNV_indiv_worm_genotyping.csv", header = TRUE, sep = ",", dec = ".", na.strings = "NA")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+# Folders
+geno_fd  <- "../data/phenotypes/2-Genotyping_data/"
+graph_fd <- "../graphs/"
+
+mydata <- read.csv(paste0(geno_fd, "1-TRP_chr2_chr3_CNV_indiv_worm_genotyping.csv"), header = TRUE, sep = ",", dec = ".", na.strings = "NA")
 
 #===========#
 # Functions #
 #===========#
 
-# Line in units
-# source: https://stackoverflow.com/a/30835971
-line2user <- function(line, side) {
-    lh <- par('cin')[2] * par('cex') * par('lheight')
-    x_off <- diff(grconvertX(c(0, lh), 'inches', 'npc'))
-    y_off <- diff(grconvertY(c(0, lh), 'inches', 'npc'))
-    switch(side,
-        `1` = grconvertY(-line * y_off, 'npc', 'user'),
-        `2` = grconvertX(-line * x_off, 'npc', 'user'),
-        `3` = grconvertY(1 + line * y_off, 'npc', 'user'),
-        `4` = grconvertX(1 + line * x_off, 'npc', 'user'),
-        stop("Side must be 1, 2, 3, or 4", call.=FALSE))
-}
+source("functions/line2user.R")
 
 #-----------------------------
 # Datas processing
@@ -93,7 +97,7 @@ sum_table_CNV <- sum_table_CNV %>% arrange(factor(CNV_genotype, levels = c("Dele
 
 ##----Output files names and extension--------#
 
-pdf(file="Figure3_chr2_chr3_CNV_indiv_worm_genotyping.pdf", width=10, height=5, useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Fig. 3 - chr2_chr3_CNV_indiv_worm_genotyping.pdf"), width=10, height=5, useDingbats=FALSE)
 
 #layout(matrix(c(1,2,3),1,3))
 layout(matrix(c(1,2,3,2,4,2),2,3), heights= c(0.99,0.1), widths = c(0.99,0.99,0.99))
