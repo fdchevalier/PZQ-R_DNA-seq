@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: FigS7_Invivo_ES_ER.R
-# Version: 0.1
+# Version: 0.2
 # Author: Winka Le Clec'h <winkal@txbiomed.org>
 # Created in: 2020
-# Modified in: 2021-08-23
+# Modified in: 2021-08-26
 
 
 #-------------------
@@ -62,7 +62,7 @@ layout(matrix(c(1,2,3,4),2,2))
 
 c.type <- c("ES-PZQ","ES-Ctrl", "ER-PZQ", "ER-Ctrl")
 mycolor <- c("#3bc188", "white", "#aa7b4d", "white")
-myborder <- c("black", "#3bc188", "white", "#aa7b4d")
+myborder <- c("black", "#3bc188", "black", "#aa7b4d")
 
 #-------------------------------#
 #-----Total worms comparison----#
