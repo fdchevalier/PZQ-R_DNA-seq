@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: Fig2.R 
-# Version: 0.2
+# Version: 0.3
 # Author: Winka Le Clec'h <winkal@txbiomed.org> & Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2021-08-09
-# Modified in: 2021-08-11
+# Modified in: 2021-08-26
 
 
 
@@ -19,6 +19,7 @@
 # Versions #
 #==========#
 
+# v0.3 - 2021-08-26: update file path and change figure size
 # v0.2 - 2021-08-11: improve figure
 # v0.1 - 2021-08-10: merge Winka's figure 2 script and the QTL zoom script
 # v0.0 - 2021-08-09: creation
@@ -84,7 +85,7 @@ graph_fd   <- "../graphs/"
 # Load data
 mydata1 <- paste0(pheno_fd, "1-Phenotyping_data/3-Lactate\ assay_worms_media_LE_PZQ-R_association_Exp1.csv") %>% read.csv()
 mydata2 <- paste0(pheno_fd, "1-Phenotyping_data/4-Lactate\ assay_worms_media_LE_PZQ-R_association_Exp2.csv") %>% read.csv()
-mydata  <- read.csv("../results/1-QTL/GWASsd-0.1.gq-0.rd-10/peaks_report.myfreq.data.fltr.AB4-freq-pv.sd-0.1-bf=0", header=TRUE, sep="\t")
+mydata  <- read.csv("../results/2-QTL/1-GWAS/peaks_report.myfreq.data.fltr.pv.sd-0.1.gq-0.rd-10-no_bf", header=TRUE, sep="\t")
 
 mychr   <- "SM_V7_3"
 exp.tag <- c("Exp1","Exp2")
@@ -244,7 +245,7 @@ myarr      <- rename_chr_SmV7(myarr, 1)
 mycex.axis <- 1.2
 mycex <- 1.5
 
-pdf(paste0(graph_fd, "Fig. 2.pdf"), width = 8, height = 15)
+pdf(paste0(graph_fd, "Fig. 2.pdf"), width = 12, height = 12)
 
     layout(matrix(c(1:3, 3, 4, 4, 5, 5, 6, 6), ncol = 2, byrow = TRUE), height=c(1, 0.1, 1, 0.7, 0.3))
 
@@ -252,7 +253,7 @@ pdf(paste0(graph_fd, "Fig. 2.pdf"), width = 8, height = 15)
     ## Experiment 1 histogram
     par(mar=c(2,5,2,1))
 
-	hist(mydata1[,7], breaks=20, xlim=c(0,120), ylab="Number of male worms", cex.lab=1.5, main="Experiment 1")
+	hist(mydata1[,7], breaks=20, xlim=c(0,120), ylab="Number of male worms", cex.axis=mycex.axis, cex.lab=1.5, main="Experiment 1", cex.main=par("cex")*2.5)
 	hist(mytop1[,7],  breaks=20, col=mycoltop, add=T)
 	hist(mybottom1[,7], col=mycolbot, add=T)
 
@@ -263,11 +264,11 @@ pdf(paste0(graph_fd, "Fig. 2.pdf"), width = 8, height = 15)
     ## Experiment 2 histogram
     par(mar=c(2,2,2,2))
 
-	hist(mydata2[,7],   breaks=20, xlim=c(0,120), ylab=" ", main="Experiment 2")
+	hist(mydata2[,7],   breaks=20, xlim=c(0,120), cex.axis=mycex.axis, main="Experiment 2", cex.main=par("cex")*2.5)
 	hist(mytop2[,7],    breaks=20, col=mycoltop, add=T)
 	hist(mybottom2[,7], breaks=5,  col=mycolbot, add=T)
 
-    # X axis label
+    ## X axis label
     par(mar = c(0,0,0,0))
     plot(c(0, 1), c(0, 1), ann = F, bty = 'n', type = 'n', xaxt = 'n', yaxt = 'n')
     text(x = 0.5, y = 0.5, "Quantity of L-lactate produced (nmol/h)", cex=1.5)
