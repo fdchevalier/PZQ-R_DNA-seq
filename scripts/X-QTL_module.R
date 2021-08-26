@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: X-QTL_module.R
-# Version: 1.0
+# Version: 1.1
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2015-04-13
-# Modified in: 2021-08-24
+# Modified in: 2021-08-26
 
 
 
@@ -19,6 +19,7 @@
 # Versions #
 #==========#
 
+# v1.1 - 2021-08-26: save filtered table / remove unnecessary graph section
 # v1.0 - 2021-08-24: rename script / turn it into a module / clean code
 # v0.3 - 2019-05-15: functions split in another file
 # v0.2 - 2018-05-01: update source data to use VCF file directly
@@ -69,13 +70,16 @@ source("functions/Sm.matplot.data.R")
 # Variables #
 #===========#
 
+# Check files
 if (missing(myvcf_file) || ! file.exists(myvcf_file)) {stop("File path in myvcf_file is missing or does not exist.", call.=FALSE)}
 if (missing(mygff_file) || ! file.exists(mygff_file)) {stop("File path in mygff_file is missing or does not exist.", call.=FALSE)}
 if (missing(myann_file) || ! file.exists(myann_file)) {stop("File path in myann_file is missing or does not exist.", call.=FALSE)}
 
+# Check folders
 if (missing(graph_fd) ) {stop("File path in graph_fd is missing or does not exist.",  call.=FALSE)}
 if (missing(result_fd)) {stop("File path in result_fd is missing or does not exist.", call.=FALSE)}
 
+# Check variables
 if (missing(myexpr))     {stop("Variable myexpr is missing or does not exist.",     call.=FALSE)}
 if (missing(myexpr.cln)) {stop("Variable myexpr.cln is missing or does not exist.", call.=FALSE)}
 if (missing(myexpr.nm))  {stop("Variable myexpr.nm is missing or does not exist.",  call.=FALSE)}
@@ -343,6 +347,9 @@ pk.rpt(myfreq.data.fltr[is.finite(rowSums(as.data.frame(myfreq.data.fltr[,pv.vec
 ## Without Bonferroni correction
 pk.rpt(myfreq.data.fltr[is.finite(rowSums(as.data.frame(myfreq.data.fltr[,pv.vec]))),pv.vec], ">=", 0, cln.print=c(1:8,gt.vec,pv.print), cln.nm.ext=paste0(myext, "-no_bf"), res.folder=result_fd)
 
+# Saving object
+save(myfreq.data.fltr, file = paste0(result_fd, "myfreq.data.fltr.RData"))
+
 
 #----------------#
 # QTL boundaries #
@@ -465,32 +472,3 @@ for (j in runmed.vec) {
     
     mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef, graph.folder=graph_fd)
 }
-
-
-j <- 1
-pv.vec2 <- 47
-sf.vec2 <- 29
-pf.vec2 <- 25
-mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef, graph.folder=graph_fd)
-mygraph(myfreq.data.fltr.r, sf.vec, j, "freq", myfn, -0.75, 0.75, ylab="Difference in allele frequency", def=mydef, graph.folder=graph_fd)
-    
-mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef, graph.folder=graph_fd)
-mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef, graph.folder=graph_fd)
-
-
-mybc <- -log10(0.05/nrow(myfreq.data.fltr.r))
-png(paste0(graph_fd, myfn, ".pv-sf.png"), width=72*12, height=72*10)
-layout(matrix(1:2, ncol = 1))
-par(mar=c(5,4,1,1)+0.1) # For small size
-matplot.data(myfreq.data.fltr.r, pv.vec2, "pvalue", abline.h=NULL, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), by.pos=TRUE, type="p")
-matplot.data(myfreq.data.fltr.r, sf.vec2, "freq", ylim.min=-1, ylim.max=1, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab="Difference in allele frequency", by.pos=TRUE, type="p")
-dev.off()
-
-
-mybc <- -log10(0.05/nrow(myfreq.data.fltr.r))
-png(paste0(graph_fd, myfn, ".pv-pf.png"), width=72*12, height=72*10)
-layout(matrix(1:2, ncol = 1))
-par(mar=c(5,4,1,1)+0.1) # For small size
-matplot.data(myfreq.data.fltr.r, pv.vec2, "pvalue", abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), by.pos=TRUE, type="p")
-matplot.data(myfreq.data.fltr.r, pf.vec2, "freq", ylim.min=0, ylim.max=1, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab="Polarized allele frequency", by.pos=TRUE, type="p")
-dev.off()
