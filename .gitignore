@@ -3,6 +3,8 @@
 data/**
 !data/genome/
 !data/genome/sm_dbSNP_v7.vcf
+!data/genome/Sm_transcript_table_gff-hhpred_2020-09-21.tsv
+!data/genome/TPM_isoforms_Sm_2020-08-07.tsv
 status/
 results/
 graphs/
