@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
-# Title: PZQ_analysis
-# Version: 0.2
+# Title: PZQ-R_ER-ES_X-QTL.R
+# Version: 0.3
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2015-14-13
-# Modified in: 2018-05-01
+# Modified in: 2021-08-25
 
 
 
@@ -11,6 +11,15 @@
 # Comments #
 #==========#
 
+# Analyze genomic data from ER and ES selected populations using X-QTL method.
+
+
+
+#==========#
+# Versions #
+#==========#
+
+# v0.3 - 2021-08-25: rename script / add X-QTL module / correct number of worms / clean code
 # v0.2 - 2018-05-01: update source data to use VCF file directly
 # v0.1 - 2018-03-15: update email address / remove unnecessary parts
 
@@ -20,10 +29,13 @@
 # Variables #
 #===========#
 
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
 # Folders
 data_fd   <- "../data/"
-graph_fd  <- "../graphs/"
-result_fd <- "../results/3-QTL Selected population/"
+graph_fd  <- "../graphs/2-ER-ES populations/"
+result_fd <- "../results/2-QTL/2-ER-ES populations/"
 
 # Data file
 myvcf_file <- paste0(data_fd, "calling/PZQ_ER-ES.vcf.gz")
@@ -37,20 +49,15 @@ myexpr     <- read.csv(paste0(data_fd, "genome/TPM_isoforms_Sm_2020-08-07.tsv"),
 myexpr.cln <- 9:12    # Column containing juvenile and adult expression data
 myexpr.nm  <- paste0("TPM ", c("juv m", "juv f", "adt m", "adt f"))
 
-mybaits <- read.csv("~/data/sm_exons/sma_agilent_baits.v7.0.chr_reorderd.bed", header=FALSE, sep="\t")
+# Baits
+mybaits <- NULL
 
 # Lib
 mylib     <- c("SmLE-PZQ-ES_F1_m", "SmLE-PZQ-ER_F1_m", "SmLE-PZQ-ES_F1_f", "SmLE-PZQ-ER_F1_f")
-mylib.ind <- c(116, 116, 137, 137)
+mylib.ind <- c(100, 100, 25, 25)
 mylib.rep <- mylib 
 
 # Allele polarization (list of samples)
-#mypol.all <- matrix(c(
-#        "SmLE-PZQ-ES_F1_m", "SmLE-PZQ-ER_F1_m",
-#        "SmLE-PZQ-ES_F1_f", "SmLE-PZQ-ER_F1_f",
-#        "SmLE-PZQ-ES_F1_f", "SmLE-PZQ-ES_F1_m",
-#        "SmLE-PZQ-ER_F1_f", "SmLE-PZQ-ER_F1_m"
-#), ncol=2, byrow=TRUE)
 mypol.all <- matrix(c(
         "SmLE-PZQ-ES_F1_m", "SmLE-PZQ-ER_F1_m",
         "SmLE-PZQ-ER_F1_m", "SmLE-PZQ-ES_F1_m",
@@ -58,10 +65,10 @@ mypol.all <- matrix(c(
         "SmLE-PZQ-ER_F1_f", "SmLE-PZQ-ES_F1_f"
 ), ncol=2, byrow=TRUE)
 
-# Z-score comparaison (list of samples)
+# Z-score comparison (list of samples)
 mycomp <- t(combn(mylib, 2))
 
-# Z-score combinaison (list of computed z-scores)
+# Z-score combination (list of computed z-scores)
 mycomp.cb <- matrix(c(
         "SmLE-PZQ-ES_F1_m-SmLE-PZQ-ER_F1_m", "SmLE-PZQ-ES_F1_f-SmLE-PZQ-ER_F1_f"
             ), ncol=2, byrow=TRUE)
@@ -72,28 +79,5 @@ mypv.pat <- ".*ES.*ER.*ES"
 # Pattern for selecting allele frequency column to report
 myfrq.pat <- ".*ES.*ER.*"
 
-# SmLE-PZQ-ER_F1_f.1
-# SmLE-PZQ-ER_F1_f.2
-# SmLE-PZQ-ER_F1_f.3
-# SmLE-PZQ-ER_F1_m.1
-# SmLE-PZQ-ER_F1_m.2
-# SmLE-PZQ-ER_F1_m.3
-# SmLE-PZQ-ES_F1_f.1
-# SmLE-PZQ-ES_F1_f.2
-# SmLE-PZQ-ES_F1_f.3
-# SmLE-PZQ-ES_F1_m.1
-# SmLE-PZQ-ES_F1_m.2
-# SmLE-PZQ-ES_F1_m.3
-# SmLE-PZQ-R_Exp1_Contracted_1_WGS
-# SmLE-PZQ-R_Exp1_Contracted_2_WGS
-# SmLE-PZQ-R_Exp1_Contracted_3_WGS
-# SmLE-PZQ-R_Exp1_Recovered_1_WGS
-# SmLE-PZQ-R_Exp1_Recovered_2_WGS
-# SmLE-PZQ-R_Exp1_Recovered_3_WGS
-# SmLE-PZQ-R_Exp2_Contracted_1_WGS
-# SmLE-PZQ-R_Exp2_Contracted_2_WGS
-# SmLE-PZQ-R_Exp2_Contracted_3_WGS
-# SmLE-PZQ-R_Exp2_Recovered_1_WGS
-# SmLE-PZQ-R_Exp2_Recovered_2_WGS
-# SmLE-PZQ-R_Exp2_Recovered_3_WGS
-
+# Run the X-QTL module
+source("X-QTL_module.R")
