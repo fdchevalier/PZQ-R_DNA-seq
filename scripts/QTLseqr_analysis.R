@@ -1,11 +1,52 @@
-library("QTLseqr")
-library("vcfR")
+#!/usr/bin/env Rscript
+# Title: QTLseqr_analysis.R
+# Version: 0.1
+# Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
+# Created in: 2021-05-13
+# Modified in: 2021-08-25
+
+
+
+#==========#
+# Comments #
+#==========#
+
+# Perform QTL analysis using G' statistics.
+
+
+
+#==========#
+# Versions #
+#==========#
+
+# v0.1 - 2021-08-25: format script / correct minor bug
+# v0.0 - 2021-05-13: creation
+
+
+
+#==========#
+# Packages #
+#==========#
+
+cat("Loading packages...\n")
+
+suppressMessages({
+    library("QTLseqr")
+    library("vcfR")
+})
+
+
 
 #===========#
 # Functions #
 #===========#
 
-source("PZQ_analysis_func.R")
+# Working directory
+setwd(file.path(getwd(), "scripts"))
+
+source("X-QTL_func.R")
+
+source("functions/csvConnection.R")
 
 #-------------------#
 # Sm exome plotting #
@@ -17,14 +58,35 @@ source("functions/rename_chr.R")
 # Plotting function
 source("functions/Sm.matplot.data.R")
 
-source("functions/csvConnection.R")
 
 
 #===========#
 # Variables #
 #===========#
 
-source("PZQ_analysis_config.R")
+# Folders
+data_fd   <- "../data/"
+graph_fd  <- "../graphs/1-GWAS/"
+result_fd <- "../results/2-QTL/1-GWAS/"
+
+# Data file
+myvcf_file <- paste0(data_fd, "calling/PZQ_GWAS_snpEff.vcf.gz")
+
+# Library
+mylib     <- c("SmLE-PZQ-R_Exp1_Contracted", "SmLE-PZQ-R_Exp1_Recovered", "SmLE-PZQ-R_Exp2_Contracted", "SmLE-PZQ-R_Exp2_Recovered")
+mylib.ind <- c(116, 116, 137, 137)
+mylib.rep <- mylib 
+
+# Allele polarization (list of samples)
+mypol.all <- matrix(c(
+        "SmLE-PZQ-R_Exp1_Contracted", "SmLE-PZQ-R_Exp1_Recovered",
+        "SmLE-PZQ-R_Exp1_Recovered", "SmLE-PZQ-R_Exp1_Recovered",
+        "SmLE-PZQ-R_Exp2_Contracted", "SmLE-PZQ-R_Exp2_Recovered",
+        "SmLE-PZQ-R_Exp2_Recovered", "SmLE-PZQ-R_Exp2_Recovered"
+), ncol=2, byrow=TRUE)
+
+# Comparison (list of samples)
+mycomp <- t(combn(mylib, 2))
 
 
 
@@ -37,8 +99,6 @@ registerDoParallel(cores = detectCores())
 
 # Load data
 myvcf <- read.vcfR(myvcf_file)
-mygff <- readGFF(mygff_file)
-myann <- read.csv(myann_file, header=TRUE, sep="\t")
 
 # Input file name
 myfn <- filename(myvcf_file, length=1)
@@ -63,13 +123,12 @@ bial.rows <- sum(bial.rows)
 
 
 # Build read depth table
-mydata.ad     <- extract.gt(myvcf, "AD")
-mydata.gq     <- extract.gt(myvcf, "GQ")
+mydata.ad <- extract.gt(myvcf, "AD")
+mydata.gq <- extract.gt(myvcf, "GQ")
 
 
 mydata <- as.data.frame(cbind( getFIX(myvcf), getINFO(myvcf), matrix(NA, nrow=nrow(mydata.ad), ncol=ncol(mydata.ad)*4) ))
 
-#mydata[,9:ncol(mydata)]  <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
 mymat <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
 
     gq     <- as.numeric(mydata.gq[,i])
@@ -116,7 +175,7 @@ myaf.data[, mycln] <- foreach (c=1:length(mycln), .combine='cbind') %dopar% {
 colnames(myaf.data)[mycln] <- lapply(mylib.rep, function(x) paste(x, c("mean.freq","sd.freq"), sep=".")) %>% unlist()
 
 
-# Allele frequency accross all replicates
+# Allele frequency across all replicates
 
 ## Build primary table
 myfreq.data <- mydata[,1:8]
@@ -124,7 +183,7 @@ myfreq.data <- mydata[,1:8]
 ### Run loop
 mymat <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
     
-    # Method recalculating AF accross all the samples
+    # Method recalculating AF across all the samples
     mycln.nr <- grep(paste(i,".*.alt",sep=""), mycolnames)
     mycln.t  <- grep(paste(i,".*.tot",sep=""), mycolnames)
 
@@ -145,7 +204,7 @@ colnames(mymat) <- lapply(mylib.rep, function(x) paste(x, c("alt.reads","tot.rea
 myfreq.data <- cbind(myfreq.data,mymat)
 
 
-# Genotype deduction in F2s
+# Genotype deduction
 cat("Generation of genotypes\n")
 mycln.REF <- grep("^REF$", colnames(myfreq.data))
 mycln.ALT <- grep("^ALT$", colnames(myfreq.data))
@@ -181,6 +240,7 @@ mymat <- foreach(i=1:nrow(mycomp), .combine='cbind') %dopar% {
 colnames(mymat) <- paste0("sub.freq.", mycomp[,1], "-", mycomp[,2])
 myfreq.data <- cbind(myfreq.data, mymat)
 
+
 #~~~~~~~~~~~~~~~~#
 # Data filtering #
 #~~~~~~~~~~~~~~~~#
@@ -203,7 +263,6 @@ rd.trsh <- 10
 rd.rows <- rowSums(mydata[, grep("*tot.allele.reads$",colnames(mydata))] < rd.trsh) == 0
 rd.rows[is.na(rd.rows)] <- FALSE
 
-#myfreq.data.fltr <- myfreq.data[ apply( cbind(snp.rows, bial.rows, sd.rows, gq.rows, rd.rows), 1, all), ]
 myfreq.data.fltr <- myfreq.data[ apply( cbind(sd.rows, gq.rows, rd.rows), 1, all), ]
 
 
@@ -211,26 +270,17 @@ myfreq.data.fltr <- myfreq.data[ apply( cbind(sd.rows, gq.rows, rd.rows), 1, all
 # Report #
 #~~~~~~~~#
 
-res.folder <- paste("results/","sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/", sep="")
-if (file.exists(res.folder) == FALSE) {dir.create(res.folder, recursive=TRUE)}
-
 # Summary
-#report <- c(
-#    paste("Nb of variable sites before filtering:",                         nb.var                                                                     ),
-#    paste("Nb of variable sites that are SNPs:",                            sum(snp.rows)                                                              ),
-#    paste("Nb of variable sites that are biallelic:",                       sum(apply( cbind(snp.rows, bial.rows), 1, all))                            ),
-#    paste("Nb of variable sites after filtering on sd between replicates:", sum(apply( cbind(snp.rows, bial.rows, sd.rows), 1, all))                   ),
-#    paste("Nb of variable sites after filtering on GQ:",                    sum(apply( cbind(snp.rows, bial.rows, sd.rows, gq.rows), 1, all))          ),
-#    paste("Nb of variable sites after filtering on read depth:",            sum(apply( cbind(snp.rows, bial.rows, sd.rows, gq.rows, rd.rows), 1, all)) )  #,
-#)
 report <- c(
-    paste("Nb of variable sites before filtering:",                         nb.var      ),
-    paste("Nb of variable sites that are SNPs:",                            snp.rows    ),
-    paste("Nb of variable sites that are biallelic:",                       bial.rows   ),
-    paste("Nb of variable sites after filtering on sd between replicates:", sum(sd.rows)),
-    paste("Nb of variable sites after filtering on read depth:",            sum(rd.rows)),
-    paste("Nb of variable sites retained:",                       nrow(myfreq.data.fltr))  #,
+    paste("Nb of variable sites before filtering:",                         nb.var                                          ),
+    paste("Nb of variable sites that are SNPs:",                            snp.rows                                        ),
+    paste("Nb of variable sites that are biallelic:",                       bial.rows                                       ),
+    paste("Nb of variable sites after filtering on sd between replicates:", sum(sd.rows)                                    ),
+    paste("Nb of variable sites after filtering on read depth:",            (rowSums(cbind(rd.rows, sd.rows)) > 1) %>% sum()),
+    paste("Nb of variable sites retained:",                                 nrow(myfreq.data.fltr)                          )
 )
+
+cat(" ", "Fitering report:", report, " ", sep="\n")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -238,10 +288,8 @@ report <- c(
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # Recreate table compatible with the package
-
 mydata2 <- as.data.frame(cbind( getFIX(myvcf)[, c(1, 2, 4, 5)],  matrix(NA, nrow=nrow(mydata.ad), ncol=ncol(mydata.ad)*3) ))
 
-#mydata[,9:ncol(mydata)]  <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
 mymat2 <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
 
     gq     <- as.numeric(mydata.gq[,i])
@@ -256,7 +304,7 @@ mymat2 <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
 
 }
 mydata2[,5:ncol(mydata2)]  <- mymat2
-colnames(mydata2)[9:ncol(mydata2)] <- colnames(mymat2)
+colnames(mydata2)[5:ncol(mydata2)] <- colnames(mymat2)
 
 mymat2 <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
     
@@ -280,7 +328,7 @@ mydata2 <- cbind(mydata2[, 1:4], mymat2)
 mygroup <- c("Recovered", "Contracted")
 mymat3 <- foreach(i=mygroup, .combine='cbind') %dopar% {
     
-    # Method recalculating AF accross all the samples
+    # Method recalculating AF across all the samples
     mycln.ref <- grep(paste0("AD_REF.*", i), colnames(mydata2))
     mycln.alt <- grep(paste0("AD_ALT.*", i), colnames(mydata2))
     mycln.gq <- grep(paste0("GQ.*", i), colnames(mydata2))
@@ -294,7 +342,6 @@ mymat3 <- foreach(i=mygroup, .combine='cbind') %dopar% {
 }
 colnames(mymat3) <- lapply(mygroup, function(x) paste0(c("AD_REF.", "AD_ALT.", "GQ."), x)) %>% unlist()
 mydata3 <- cbind(mydata2[, 1:4], mymat3)
-
 
 
 # Filter the data with the previous filter parameters
@@ -317,12 +364,6 @@ for (i in 1:2) {
     assign(paste0("df", i), x)
     assign(paste0("df", i, ".q"), y)
 }
-
-
-## deltaSNP
-### This on crashes for unknown reason
-#df2.f <- runQTLseqAnalysis(df, bulkSize = c(116,116))
-
 
 # Combined
 HighBulk <- grep("Recovered", colnames(mydata3), value = TRUE) %>% strsplit(., "\\.") %>% lapply(., function(x) x[2]) %>% unlist %>% unique()
