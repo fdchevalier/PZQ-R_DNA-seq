@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: PZQ-R_GWAS_CNV.R
-# Version: 0.2
+# Version: 0.3
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2018-03-12
-# Modified in: 2021-04-15
+# Modified in: 2021-08-27
 
 
 
@@ -11,6 +11,7 @@
 # Comments #
 #==========#
 
+# v0.3 - 2021-08-27: update path
 # v0.2 - 2021-04-15: adapt to the notebook environment
 # v0.1 - 2019-10-17: adapt script to the whole genome sequencing data
 # v0.0 - 2018-03-12: creation
@@ -18,7 +19,7 @@
 
 
 #==========#
-# Pacakges #
+# Packages #
 #==========#
 cat("Loading packages...\n")
 
@@ -41,7 +42,7 @@ setwd(file.path(getwd(), "scripts"))
 
 # Folders
 data_fd   <- "../data/"
-graph_fd  <- "../graphs/"
+graph_fd  <- "../graphs/1-GWAS/CNV/"
 result_fd <- "../results/1-QTL/"
 
 
@@ -49,7 +50,7 @@ exp.tag <- c("Exp1","Exp2")
 
 BAMFolder <- paste0(data_fd, "libraries/1-GWAS/")
 
-if(! dir.exists(graph_fd)) { dir.create(graph_fd) }
+if(! dir.exists(graph_fd)) { dir.create(graph_fd, recursive = TRUE) }
 
 mychr <- paste0("SM_V7_", c(1:7, "ZW"))
 
