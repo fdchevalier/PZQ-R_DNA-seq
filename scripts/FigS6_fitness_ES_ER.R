@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: FigS3_fitness_ES_ER.R
-# Version: 0.1
+# Version: 0.2
 # Author: Winka Le Clec'h <winkal@txbiomed.org>
 # Created in: 2020
-# Modified in: 2021-08-23
+# Modified in: 2021-08-27
 
 
 #-------------------
@@ -53,7 +53,7 @@ data.hamsters.ER <- data_hamsters[data_hamsters[,1] == "SmLE-PZQ-ER", ]
 # Figures
 #---------
 
-pdf(file=paste0(graph_fd, "Supp. Fig. 3 - Fitness_ES_ER_4.pdf"), width=10, height=4, useDingbats=FALSE)
+pdf(file=paste0(graph_fd, "Supp. Fig. 6 - Fitness_ES_ER.pdf"), width=10, height=4, useDingbats=FALSE)
 
 layout(matrix(c(1,2,3),1,3))
 
