@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: PZQ-R_ER-ES_CNV_graph_RD.R
-# Version: 0.1
+# Version: 0.2
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2021-06-05
-# Modified in: 2021-08-10
+# Modified in: 2021-08-27
 
 
 
@@ -19,6 +19,7 @@
 # Versions #
 #==========#
 
+# v0.2 - 2021-08-27: update figure name
 # v0.1 - 2021-08-10: add packages / load data more efficiently / redesign graph layout
 # v0.0 - 2021-06-05: creation
 
@@ -115,7 +116,7 @@ for (r in 1:length(regions)) {
 
 cat("\nDrawing graphs...\n")
 
-pdf(paste0(graph_fd, "Supp. Fig. 4.pdf"), width = 15, height = 8)
+pdf(paste0(graph_fd, "Supp. Fig. 3.pdf"), width = 15, height = 8)
 
 mycex    <- 1.2
 mycex_ax <- 1.2
