@@ -1,5 +1,7 @@
 # QTL identification related to PZQ response in *Schistosoma mansoni* using genome-wide association study
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5297219.svg)](https://doi.org/10.5281/zenodo.5297219)
+
 This repository contains the notebook and scripts used to analyze the genome-wide association study (GWAS) that led to the identification of the quantitative trait locus (QTL) involved in praziquantel (PZQ) resistance. The GWAS was performed using the SmLE-PZQ-R schistosome population which is polymorphic regarding PZQ response. QTL identification allowed the generation of two populations enriched in PZQ resistant allele (SmLE-PZQ-ER) and enriched in PZQ sensitive allele (SmLE-PZQ-ES). This analysis is part of the work described in [Genetic analysis of praziquantel response in schistosome parasites implicates a Transient Receptor Potential channel](https://doi.org/10.1101/2021.06.09.447779). 
 
 ## Abstract
