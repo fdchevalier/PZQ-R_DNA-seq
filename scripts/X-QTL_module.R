@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: X-QTL_module.R
-# Version: 1.1
+# Version: 1.2
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2015-04-13
-# Modified in: 2021-08-26
+# Modified in: 2023-03-22
 
 
 
@@ -19,6 +19,7 @@
 # Versions #
 #==========#
 
+# v1.2 - 2023-03-22: update plotting section due to new genome version
 # v1.1 - 2021-08-26: save filtered table / remove unnecessary graph section
 # v1.0 - 2021-08-24: rename script / turn it into a module / clean code
 # v0.3 - 2019-05-15: functions split in another file
@@ -62,7 +63,13 @@ source("functions/coord_intersect.R")
 source("functions/rename_chr.R")
 
 # Plotting function
+## For v7 genome
 source("functions/Sm.matplot.data.R")
+data.order_v7 <- data.order
+matplot.data_v7 <- matplot.data
+
+## For v9 genome
+source("functions/Sm.matplot.data_v4.0.R")
 
 
 
@@ -94,6 +101,11 @@ if (missing(mycomp.cb))  {stop("Variable mycomp.cb is missing or does not exist.
 if (missing(mypv.pat))   {stop("Variable mypv.pat is missing or does not exist.",   call.=FALSE)}
 if (missing(myfrq.pat)) {stop("Variable myfreq.pat is missing or does not exist.", call.=FALSE)}
 
+if (! exists("mysfx")) { mysfx <- NULL }
+if (! is.null(mysfx)) {
+    graph_fd  <- paste0(graph_fd, "/", mysfx, "/")
+    result_fd <- paste0(result_fd, "/", mysfx, "/")
+}
 
 
 #=================#
@@ -150,7 +162,7 @@ mymat <- foreach(i=1:ncol(mydata.ad), .combine='cbind') %dopar% {
     return(x)
 
 }
-mydata[,9:ncol(mydata)]  <- mymat 
+mydata[,9:ncol(mydata)]  <- mymat
 colnames(mydata)[9:ncol(mydata)] <- colnames(mymat)
 
 # Adjustments
@@ -187,7 +199,7 @@ myfreq.data <- mydata[,1:8]
 
 ## Run loop
 mymat <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
-    
+
     # Method recalculating AF across all the samples
     mycln.nr <- grep(paste(i,".*.alt",sep=""), mycolnames)
     mycln.t  <- grep(paste(i,".*.tot",sep=""), mycolnames)
@@ -199,7 +211,7 @@ mymat <- foreach(i=mylib.rep, .combine='cbind') %dopar% {
     my.t <- mydata[, mycln.t]
     my.t <- suppressWarnings(as.data.frame(sapply(my.t, as.numeric)))
     my.t.sum <- rowSums(my.t)
-    
+
 
     x <- cbind(my.nr.sum, my.t.sum, my.nr.sum/my.t.sum)
     return(x)
@@ -256,11 +268,11 @@ myfreq.data <- cbind(myfreq.data, mymat)
 cat("Z-score calulation\n")
 
 mymat <- foreach(i=1:nrow(mycomp), .combine='cbind') %dopar% {
-    
-    myctrl.t.r <- myfreq.data[ ,grep(paste(mycomp[i,2],"tot",sep="."), colnames(myfreq.data))] 
+
+    myctrl.t.r <- myfreq.data[ ,grep(paste(mycomp[i,2],"tot",sep="."), colnames(myfreq.data))]
     myctrl.af  <- myfreq.data[ ,grep(paste(mycomp[i,2],"freq",sep="."), colnames(myfreq.data))]
-    
-    mytreat.t.r <- myfreq.data[ ,grep(paste(mycomp[i,1],"tot",sep="."), colnames(myfreq.data))] 
+
+    mytreat.t.r <- myfreq.data[ ,grep(paste(mycomp[i,1],"tot",sep="."), colnames(myfreq.data))]
     mytreat.af  <- myfreq.data[ ,grep(paste(mycomp[i,1],"freq",sep="."), colnames(myfreq.data))]
 
     myctrl.ind  <- mylib.ind[grep(mycomp[i,2],mylib)]
@@ -334,7 +346,7 @@ report <- c(
 cat(" ", "Fitering report:", report, " ", sep="\n")
 write(report, paste0(result_fd, "snp_report"))
 
-# Table 
+# Table
 pv.vec <- grep(paste0("pv", mypv.pat), colnames(myfreq.data.fltr))
 pv.print  <- grep("pv.*", colnames(myfreq.data.fltr))
 gt.vec <- grep("GT", colnames(myfreq.data.fltr))
@@ -419,7 +431,7 @@ if (length(mypv) == 1) { myrows <- myfreq.data.fltr[,mypv] <= bf.cor } else { my
 # Generating tables
 for (i in 1:length(mychr)) {
     mytb <- qtl.tb(x=myfreq.data.bed[[i]], x.fltr=myfreq.data.fltr.bed[[i]], chr=mychr[[i]], pv.cln=mypv, bf.cor, ann.tb=myann, expr.tb=myexpr, expr.cln=myexpr.cln, expr.nm=myexpr.nm, cln.print=c(gt.vec,frq.vec,pv.print), res.folder=result_fd)
-    
+
     if (! is.null(mytb)) {
         qtl.tb.sum(mytb, ann.tb=myann, expr.tb=myexpr, expr.cln=myexpr.cln, expr.nm=myexpr.nm, gff=mygff.genes, baits.bed=mybaits, res.folder=result_fd)
     }
@@ -446,8 +458,14 @@ myaf.plot(mydata[sd.rows,], vec, myfn, ext=".freq-fltr-sd.png", graph.folder=gra
 z.vec <- grep("z", colnames(myfreq.data.fltr), value=T)
 myz.qq(myfreq.data.fltr, z.vec, myfn, graph.folder=graph_fd)
 
-myfreq.data.fltr.r <- rename_chr_SmV7(myfreq.data.fltr, 1)
-
+if (grepl("SM_V7_", myfreq.data.fltr[1,1])) {
+    myfreq.data.fltr.r <- rename_chr_SmV7(myfreq.data.fltr, 1)
+    myfreq.data.fltr.r <- data.order_v7(myfreq.data.fltr.r)
+    g_vers <- 7
+} else {
+    myfreq.data.fltr.r <- myfreq.data.fltr
+    g_vers <- 9
+}
 
 # P-value plot
 runmed.vec <- c(NA, 5,11,21)
@@ -464,11 +482,11 @@ pf.vec <- grep("pol.freq", colnames(myfreq.data.fltr.r))
 myfreq.data.fltr.r <- myfreq.data.fltr.r[ is.finite(rowSums(myfreq.data.fltr.r[,pv.vec])), ]
 
 for (j in runmed.vec) {
-    mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef, graph.folder=graph_fd)
-    
-#   mygraph(myfreq.data.fltr.r, f.vec, j, "freq", myfn, graph.folder=graph_fd)
+    mygraph(myfreq.data.fltr.r, pv.vec, j, "pvalue", myfn, def=mydef, graph.folder=graph_fd, version=g_vers)
 
-    mygraph(myfreq.data.fltr.r, sf.vec, j, "freq", myfn, -0.75, 0.75, ylab="Difference in allele frequency", def=mydef, graph.folder=graph_fd)
-    
-    mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef, graph.folder=graph_fd)
+#   mygraph(myfreq.data.fltr.r, f.vec, j, "freq", myfn, graph.folder=graph_fd, version=g_vers)
+
+    mygraph(myfreq.data.fltr.r, sf.vec, j, "freq", myfn, -0.75, 0.75, ylab="Difference in allele frequency", def=mydef, graph.folder=graph_fd, version=g_vers)
+
+    mygraph(myfreq.data.fltr.r, pf.vec, j, "freq", myfn, def=mydef, graph.folder=graph_fd, version=g_vers)
 }

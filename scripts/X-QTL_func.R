@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: X-QTL_func.R
-# Version: 0.1
+# Version: 0.2
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2019-05-15
-# Modified in: 2021-08-24
+# Modified in: 2023-03-22
 
 
 
@@ -11,6 +11,7 @@
 # Comments #
 #==========#
 
+# v0.2 - 2023-03-22: update plotting command with new arugments in function of reference genome
 # v0.1 - 2021-08-24: remove unnecessary functions / improve functions / clean code
 # v0.0 - 2019-05-15: store functions in a separate file from the initial script
 
@@ -88,7 +89,7 @@ pk.rpt <- function ( x, sign, trsh, cln.print=NULL, cln.nm.ext=NULL, res.folder,
     ## cln.nm.ext: name to be printed in the filename of the report (default, name from cln.print)
     ## res.folder: folder to store tables
     ## filename: filename of the table
-    
+
     # Check steps
     ## Check mandatory objects
     if (missing(x) || missing(sign) || missing(trsh) || missing(res.folder)) {stop("x, sign, trsh and res.folder are mandatory.", call.=FALSE)}
@@ -100,11 +101,11 @@ pk.rpt <- function ( x, sign, trsh, cln.print=NULL, cln.nm.ext=NULL, res.folder,
 
     ## Check signs
     if (! is.character(sign) || ! (sign == ">" || sign == "<" || sign == "<=" || sign == ">=" || sign == "==")) {stop("sign must be >, <, >=, <= or ==.", call.=FALSE)}
-    
+
     ## Check for directory
     if (file.exists(res.folder) == FALSE) {dir.create(res.folder, recursive=TRUE)}
 
-    # x name 
+    # x name
     x.splt <- unlist(strsplit(deparse(substitute(x)), "\\[|,|\\]$"))[1]
     x.nm <- x.splt[1]
 
@@ -134,7 +135,7 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
     ## x            a table with allele frequencies, genotypes, and p-values
     ## x.flt        filtered x table
     ## chr          chromosome to filter on
-    ## pv.cln       column(s) that contains p-values to filter on       
+    ## pv.cln       column(s) that contains p-values to filter on
     ## bf.cor       Bonferroni correction
     ## ann.tb       annotation table
     ## expr.tb      gene expression table
@@ -151,9 +152,9 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
         my.qtl <- x.fltr[ rowSums(x.fltr[,pv.cln] <= bf.cor, na.rm=TRUE) > 0 & x.fltr[,1] == chr, 2]
     }
 
-    
+
     bf.lim <- c(my.qtl[1], my.qtl[length(my.qtl)])
-    
+
     # Select rows in the QTL region
     x <- x[ x[,1] == chr & x[,2] >= bf.lim[1] & x[,2] <= bf.lim[2], ]
     x.fltr <- x.fltr[ x.fltr[,1] == chr & x.fltr[,2] >= bf.lim[1] & x.fltr[,2] <= bf.lim[2], ]
@@ -167,7 +168,7 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
     #--------------#
 
     myinfo <- strsplit(x[,8], ";", fixed=T)
-    
+
     # Prepare parallelization
     myinfo.lg <- 1:length(myinfo)
     n <- detectCores()-1
@@ -183,31 +184,31 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
 
     old.workers <- getDoParWorkers()
     registerDoParallel(n)
-    
+
     mygenes.ls <- foreach(j=1:length(myinfo.lg), .combine='c') %dopar% {
         myidx <- myinfo.lg[[j]]
 
         mygenes.ls.tmp <- mygenes.ls[myidx]
-        
+
         for (i in 1:length(myidx)) {
             ann <- myinfo.ann[[myidx[i]]]
 
             mycln.tmp <- seq(0, by=15, length.out=round(length(ann)/15))
-            
+
             if (length(mycln.tmp) > 0) {
                 mymtx <- sapply(mycln.tmp, function(y) ann[y+c(2,3,4,7,8,10,11)])
 
-                mymain.gene <- names(sort(table(mymtx[3,]), decreasing=T)[1]) 
-           
-                myRNA <- mymtx[4,]  
+                mymain.gene <- names(sort(table(mymtx[3,]), decreasing=T)[1])
+
+                myRNA <- mymtx[4,]
                 myRNA.tb <- matrix(NA, nrow=2+length(expr.cln), ncol=ncol(mymtx))
 
                 for (r in 1:length(myRNA)) {
-                    
+
                     # Corresponding gene
                     mygene <- unlist(strsplit(myRNA[r], ".", fixed=TRUE))[1]
-                    if (is.na(mygene)) next 
-                    
+                    if (is.na(mygene)) next
+
                     # Transcript data
                     ann.tmp <- ann.tb[ ann.tb[,1] == myRNA[r] , ]
                     # If no transcript detected
@@ -229,10 +230,10 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
 
                 # Combine matrix
                 mymtx <- rbind(mymtx, myRNA.tb)
-                
+
                 # Reorder rows
                 mymtx <- mymtx[c(3, 8:(9+k), 4, 1:2, 5:7), ]
-                
+
                 mygenes.ls.tmp[[i]] <- mymtx
             }
         }
@@ -240,32 +241,32 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
         return(mygenes.ls.tmp)
 
     }
-    
+
     cln.nm <- c("Gene", "GFF_annotation", "HHPred_annotation", expr.nm)
     mymain.genes.tb <- foreach(j=1:length(myinfo.lg), .combine='rbind') %dopar% {
         myidx <- myinfo.lg[[j]]
 
         mymain.genes.tb.tmp <- as.data.frame(matrix(NA, ncol=length(cln.nm), nrow=length(myinfo.ann)))
-        
+
         for (i in 1:length(myidx)) {
             ann <- myinfo.ann[[myidx[i]]]
 
             mycln.tmp <- seq(0, by=15, length.out=round(length(ann)/15))
-            
+
             if (length(mycln.tmp) > 0) {
                 mymtx <- sapply(mycln.tmp, function(y) ann[y+c(2,3,4,7,8,10,11)])
 
-                mymain.gene <- names(sort(table(mymtx[3,]), decreasing=T)[1]) 
-           
-                myRNA <- mymtx[4,]  
+                mymain.gene <- names(sort(table(mymtx[3,]), decreasing=T)[1])
+
+                myRNA <- mymtx[4,]
                 myRNA.tb <- matrix(NA, nrow=2+length(expr.cln), ncol=ncol(mymtx))
 
                 for (r in 1:length(myRNA)) {
-                    
+
                     # Corresponding gene
                     mygene <- unlist(strsplit(myRNA[r], ".", fixed=TRUE))[1]
-                    if (is.na(mygene)) next 
-                    
+                    if (is.na(mygene)) next
+
                     # Transcript data
                     ann.tmp <- ann.tb[ ann.tb[,1] == myRNA[r] , ]
                     # If no transcript detected
@@ -305,7 +306,7 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
         return(mymain.genes.tb.tmp)
 
     }
-    
+
     colnames(mymain.genes.tb) <- cln.nm
 
     # Reset initial workers
@@ -325,7 +326,7 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
 
     # Final table
     myfinal.tb <- cbind(x[,c(1,2,4,5)], mymain.genes.tb, x[,cln.print], mygenes.tb, row.names = NULL)
-    myfinal.tb.qtl <- myfinal.tb 
+    myfinal.tb.qtl <- myfinal.tb
 
     ## Select only informative columns then
     myclns <- ! apply(myfinal.tb.qtl, 2, function(x) all(is.na(x)))
@@ -352,7 +353,7 @@ qtl.tb.sum <- function(x, ann.tb, expr.tb, expr.cln, expr.nm=NULL, gff.genes, ba
     ## gff.genes    GFF file with only gene information
     ## baits.bed    BED coordinated of the baits
     ## res.folder: folder to store tables
-    
+
     # Sanity checks
     ## Check mandatory objects
     if (missing(res.folder)) {stop("res.folder is mandatory.", call.=FALSE)}
@@ -364,10 +365,10 @@ qtl.tb.sum <- function(x, ann.tb, expr.tb, expr.cln, expr.nm=NULL, gff.genes, ba
     bf.lim <- c(x[1,2], x[nrow(x),2])
 
     cat("Summary QTL table: processing genes from ", chr, "...\n", sep="")
-    
+
     if(is.null(expr.nm)) { expr.nm <- colnames(expr)[expr.cln] }
     k <- length(expr.cln)
-    
+
     gff.genes.qtl <- gff.genes[gff.genes[,1] == chr & gff.genes[,5] >= bf.lim[1] & gff.genes[,4] <= bf.lim[2],]
 
     mygenes.occ <- unique(gff.genes.qtl[,9])
@@ -396,19 +397,19 @@ qtl.tb.sum <- function(x, ann.tb, expr.tb, expr.cln, expr.nm=NULL, gff.genes, ba
         } else {
             capture <- NA
         }
-        
+
         # Is there any GFF v5 ID(s) associated to the current gene?
         old.id <- as.data.frame(gff.genes[ gff.genes[,9] == g, 15 ])[,3]
-        if (length(old.id) == 0) { 
-            old.id <- NA 
+        if (length(old.id) == 0) {
+            old.id <- NA
         } else {
             old.id <- paste(old.id, collapse=", ")
         }
-        
+
         # Pull out information if the gene is in the variant data table
         if (any(x[,5] == g, na.rm=TRUE)) {
             mytb.tmp <- x[ ! is.na(x[,5]) & x[,5] == g, ]
-        
+
             mypos <- as.data.frame(gff.genes[ gff.genes[,9] == g, c(4,5) ])
             if (dim(mypos)[1] == 0) { mypos <- c(NA,NA) }
 
@@ -420,10 +421,10 @@ qtl.tb.sum <- function(x, ann.tb, expr.tb, expr.cln, expr.nm=NULL, gff.genes, ba
             myimpct.sc  <- sum(myimpct.vec)
             myimpct.sc2 <- round(sum(myimpct.vec)/(length(myimpct.vec)/nb.var), digits=1)
 
-            
-            mysum.tb[myidx,1:2]  <- mytb.tmp[1,c(1,5)] 
+
+            mysum.tb[myidx,1:2]  <- mytb.tmp[1,c(1,5)]
             mysum.tb[myidx,3]    <- old.id
-            mysum.tb[myidx,4:5]  <- mypos 
+            mysum.tb[myidx,4:5]  <- mypos
             mysum.tb[myidx,6:7]  <- mytb.tmp[1,6:7]
             mysum.tb[myidx,8:(7+k)]  <- as.matrix(mytb.tmp[1,8:(7+k)])
             mysum.tb[myidx,8+k]  <- capture
@@ -469,7 +470,7 @@ qtl.tb.sum <- function(x, ann.tb, expr.tb, expr.cln, expr.nm=NULL, gff.genes, ba
     mysum.tb <- as.data.frame(mysum.tb[ ! rowSums(is.na(mysum.tb)) == ncol(mysum.tb), ])
 
     # Name column
-    colnames(mysum.tb) <- cln.nm 
+    colnames(mysum.tb) <- cln.nm
 
     myrows <- na.omit(rownames(mysum.tb)[mysum.tb[,1] == chr & mysum.tb[,5] >= bf.lim[1] & mysum.tb[,4] <= bf.lim[2]])
     mysum.tb.qtl <- mysum.tb[ myrows, ]
@@ -501,12 +502,12 @@ myaf.plot <- function(x, lib.vec, plot.filename, ext=".png", def="HD", graph.fol
     } else if (def != "HD" && def != "LD") {
         stop("def can be HD or LD only")
     }
-    
+
     if (is.null(graph.folder)) { graph.folder <- paste("graphs_",def,"/","sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/", sep="") }
     if (file.exists(graph.folder) == FALSE) {dir.create(graph.folder, recursive=TRUE)}
 
     Lab.palette <- colorRampPalette(c("blue", "orange", "red"), space = "Lab")
-    
+
     for (i in lib.vec) {
         # Remove NA
         mycln <- grep(paste(i,".*.freq",sep=""),colnames(x))
@@ -520,11 +521,11 @@ myaf.plot <- function(x, lib.vec, plot.filename, ext=".png", def="HD", graph.fol
         ## Layout
         nb.plot <- length(mycln)*2
         nb.plot.round <- ceiling(nb.plot/2)*2
-        
+
         png(paste(graph.folder,plot.filename,".afplot.",i,ext,sep=""), width=72*myheight*nb.plot.round/2)
 
         layout(matrix(1:nb.plot.round, ncol=nb.plot.round/2))
-        
+
         ## Pairwise comparison
         mycbm <- combn(mycln,2)
 
@@ -536,13 +537,13 @@ myaf.plot <- function(x, lib.vec, plot.filename, ext=".png", def="HD", graph.fol
             plot(x[,mycbm[1,j]], x[,mycbm[2,j]], col=rgb(0,100,0,50,maxColorValue=255), xlab=colnames(x)[mycbm[1,j]], ylab=colnames(x)[mycbm[2,j]])
             abline(mylm, col="red")
             text(0, (par("usr")[4]+par("usr")[4]*0.02), paste("R²=",round(mylm$coefficients[2],2),sep=""), adj = c(0,0), xpd=TRUE)
-            
+
             smoothScatter(x[,mycbm[1,j]], x[,mycbm[2,j]], xlab=colnames(x)[mycbm[1,j]], ylab=colnames(x)[mycbm[2,j]], colramp = Lab.palette)
             abline(mylm, col="red")
         }
 
         dev.off()
-        
+
     }
 }
 
@@ -552,7 +553,7 @@ myaf.plot <- function(x, lib.vec, plot.filename, ext=".png", def="HD", graph.fol
 #~~~~~~~~~~~~~~~~~~~~~#
 
 myz.qq <- function(x, z.vec, plot.filename, def="HD", graph.folder=NULL) {
-    
+
     # Picture size
     if (def == "HD") {
         mywidth <- 12
@@ -563,14 +564,14 @@ myz.qq <- function(x, z.vec, plot.filename, def="HD", graph.folder=NULL) {
     } else if (def != "HD" && def != "LD") {
         stop("def can be HD or LD only")
     }
-    
+
     if (is.null(graph.folder)) { graph.folder <- paste("graphs_",def,"/","sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/", sep="") }
     if (file.exists(graph.folder) == FALSE) {dir.create(graph.folder, recursive=TRUE)}
-    
+
     for (i in z.vec) {
-        
+
         png(paste(graph.folder,plot.filename,".qq-",i,".png",sep=""), width=72*mywidth, height=72*myheight)
-        
+
         myp <- qqnorm(x[,i], main=paste0("Normal Q-Q Plot of ",i), type="n")
         smoothScatter(myp, col="darkblue", add=TRUE)
         qqline(x[,i], col="red")
@@ -584,8 +585,8 @@ myz.qq <- function(x, z.vec, plot.filename, def="HD", graph.folder=NULL) {
 # P-value plot #
 #~~~~~~~~~~~~~~#
 
-mygraph <- function(data, col.vec, runmed=NULL, type="pvalue", plot.filename, ylim.min=NULL, ylim.max=NULL, ylab=NULL, def="HD", graph.folder=NULL) {
-    
+mygraph <- function(data, col.vec, runmed=NULL, type="pvalue", plot.filename, ylim.min=NULL, ylim.max=NULL, ylab=NULL, ymir=FALSE, def="HD", graph.folder=NULL, version=NULL) {
+
     # Picture size
     if (def == "HD") {
         mywidth <- 12
@@ -596,11 +597,13 @@ mygraph <- function(data, col.vec, runmed=NULL, type="pvalue", plot.filename, yl
     } else if (def != "HD" && def != "LD") {
         stop("def can be HD or LD only")
     }
-    
+
+    if (is.null(version)) { stop("version is missing") }
+
     if (is.null(graph.folder)) { graph.folder <- paste("graphs_",def,"/","sd-", sd.trsh, ".gq-", gq.trsh, ".rd-", rd.trsh, "/", sep="") }
     if (file.exists(graph.folder) == FALSE) {dir.create(graph.folder, recursive=TRUE)}
 
-    # Bonferroni correction 
+    # Bonferroni correction
     mybc <- -log10(0.05/nrow(data))
 
     if (is.null(runmed) || is.na(runmed)) {runmed <- NULL ; myrmd <- 0} else {myrmd <- runmed}
@@ -608,10 +611,14 @@ mygraph <- function(data, col.vec, runmed=NULL, type="pvalue", plot.filename, yl
     for (i in 1:length(col.vec)) {
 
         png(paste(graph.folder,plot.filename,".",colnames(data)[col.vec[i]],".rmd-",myrmd,".png",sep=""), width=72*mywidth, height=72*myheight)
-        
+
         par(mar=c(5,4,1,1)+0.1) # For small size
-        matplot.data(data, col.vec[i], type, myrunmed=runmed, ylim.min=ylim.min, ylim.max=ylim.max, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab=ylab, by.pos=TRUE, type="p")
-    
+        if (version == 7) {
+            matplot.data_v7(data, col.vec[i], type, myrunmed=runmed, ylim.min=ylim.min, ylim.max=ylim.max, abline.h=mybc, abline.lwd=2, xlab.axis=c("1","2","3","4","5","6","7","Z","Unass. sc."), ylab=ylab, by.pos=TRUE, type="p", data.order=FALSE)
+        } else {
+            matplot.data(data, col.vec[i], type, myrunmed=runmed, ylim=c(ylim.min, ylim.max), abline.h=mybc, abline.lwd=2, ylab=ylab, by.pos=TRUE, type="p", ymir=ymir)
+        }
+
         dev.off()
     }
 
