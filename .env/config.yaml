@@ -1,0 +1,9 @@
+max-jobs-per-second: 10
+max-status-checks-per-second: 10
+latency-wait: 60
+jobs: 1000
+default-resources: 
+  - hmem=1 * 10 ** 9
+  - cores=1
+
+cluster: "qsub -V -cwd -o status/ -j y -r y -l mem_free={resources.hmem} -pe smp {resources.cores} -S /bin/bash"
