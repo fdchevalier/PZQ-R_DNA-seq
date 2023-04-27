@@ -1,8 +1,8 @@
 # Title: Sm.matplot.data.R
-# Version: 4.0
+# Version: 5.0
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2012-08-03
-# Modified in: 2023-03-20
+# Modified in: 2023-04-27
 
 
 
@@ -18,6 +18,7 @@
 # Versions #
 #==========#
 
+# v5.0 - 2023-04-27: adapt function to v10 genome
 # v4.0 - 2023-03-20: adapt function to the v9 genome / add and update y-axis related arguments / correct typos
 # v3.4 - 2021-08-11: correct minor bug regarding arrow.head
 # v3.3 - 2018-01-03: transform data to respect ylim.max if use
@@ -65,7 +66,7 @@ is.wholenumber <- function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) 
 #-----------------#
 
 data.order <- function(x) {
-    chr.names <- c("SM_V9_1", "SM_V9_2", "SM_V9_3", "SM_V9_4", "SM_V9_5", "SM_V9_6", "SM_V9_7", "SM_V9_PAR1", "SM_V9_ZSR", "SM_V9_WSR", "SM_V9_PAR2")
+    chr.names <- c("SM_V10_1", "SM_V10_2", "SM_V10_3", "SM_V10_4", "SM_V10_5", "SM_V10_6", "SM_V10_7", "SM_V10_Z", "SM_V10_WSR")
 
     data.tmp <- NULL
 
@@ -90,7 +91,7 @@ arr.gene <- function (x, y, col="black") {
 # Function to plot the variants by chromosomes #
 #----------------------------------------------#
 
-matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=NULL, ylim=NULL, ylab=NULL, ymir=FALSE, xlab="Chromosomes", xlab.axis=c("1", "2", "3", "4", "5", "6", "7", "PAR1", "ZSR", "WSR", "PAR2"), col=c("aquamarine4", "grey30"), chr.bg="grey90", cex.axis=0.9, cex=1, lwd=1, type="l", pch=20, abline.h=NULL, abline.col="blue", abline.lty=3, abline.lwd=1, arrow.head=NULL, arrow.head.col="black", data.order=TRUE, by.pos=FALSE, gap=0.2, add=FALSE, verbose=FALSE) {
+matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=NULL, ylim=NULL, ylab=NULL, ymir=FALSE, xlab="Chromosomes", xlab.axis=c("1", "2", "3", "4", "5", "6", "7", "Z", "WSR"), col=c("aquamarine4", "grey30"), chr.bg="grey90", cex.axis=0.9, cex=1, lwd=1, type="l", pch=20, abline.h=NULL, abline.col="blue", abline.lty=3, abline.lwd=1, arrow.head=NULL, arrow.head.col="black", data.order=TRUE, by.pos=FALSE, gap=0.2, add=FALSE, verbose=FALSE) {
 
 
     #~~~~~~~#
@@ -139,7 +140,7 @@ matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=
         if (loess.span < 0 | loess.span > 1) {stop("loess.span must a number in [0;1].")}
     }
 	if (type != "l" & type != "p") {stop("type must be l or p.")}
-    if (! is.null(xlab.axis) && length(xlab.axis) != 11) {stop("xlab.axis must be a vector of 11 values.")}
+    if (! is.null(xlab.axis) && length(xlab.axis) != 9) {stop("xlab.axis must be a vector of 11 values.")}
     if (! is.null(by.pos) & ! ( is.logical(by.pos) | is.data.frame(by.pos) | is.matrix(by.pos) )) {stop("by.pos must be TRUE/FALSE or a dataframe/matrix of chromosome names and positions.")}
     if (! is.null(arrow.head) & ! ( isTRUE(by.pos) | is.data.frame(by.pos) | is.matrix(by.pos) )) {stop("arrow.head must be a dataframe or a matrix of chromosome names and positions and requires by.pos.")}
 	if (! is.numeric(gap)) {stop("gap must be numeric.")}
@@ -182,7 +183,7 @@ matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=
     }
 
 	# Chromosome parameters use for search and plotting
-	chr.names      <- c("SM_V9_1", "SM_V9_2", "SM_V9_3", "SM_V9_4", "SM_V9_5", "SM_V9_6", "SM_V9_7", "SM_V9_PAR1", "SM_V9_ZSR", "SM_V9_WSR", "SM_V9_PAR2")
+	chr.names      <- c("SM_V10_1", "SM_V10_2", "SM_V10_3", "SM_V10_4", "SM_V10_5", "SM_V10_6", "SM_V10_7", "SM_V10_Z", "SM_V10_WSR")
     chr.names.true <- xlab.axis
     chr.names.all  <- unique(as.vector(data.coord[,1]))
 
@@ -247,7 +248,7 @@ matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=
         mypos_lb <- NULL
         mypos_tk <- NULL
 		for (i in 1:length(chr.names)) {
-			mypos_lb[i]   <- chr.SNP.length[i] + (chr.SNP.length[i+1]-chr.SNP.length[i]) / 2 + gap * (i - 1)
+            mypos_lb[i]   <- chr.SNP.length[i] + (chr.SNP.length[i+1]-chr.SNP.length[i]) / 2 + gap * (i - 1)
             mypos_tk[[i]] <- c(chr.SNP.length[i], chr.SNP.length[i+1]) + gap * (i - 1)
 		}
 
@@ -262,8 +263,8 @@ matplot.data <- function (data.tab, column, datatype, myrunmed=NULL, loess.span=
         }
 
         ## Axis labels
-		axis(1, at=mypos_lb, labels=chr.names.true, cex.axis=cex.axis, tick=FALSE)
-		axis(2, cex.axis=cex.axis)
+        axis(1, at=mypos_lb, labels=chr.names.true, cex.axis=cex.axis, tick=FALSE)
+        axis(2, cex.axis=cex.axis)
 
         mtext(xlab, side=1, line=3)
 		mtext(ylab, side=2, line=3)
