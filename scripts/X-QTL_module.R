@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: X-QTL_module.R
-# Version: 1.2
+# Version: 1.3
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2015-04-13
-# Modified in: 2023-03-22
+# Modified in: 2023-04-27
 
 
 
@@ -19,6 +19,7 @@
 # Versions #
 #==========#
 
+# v1.3 - 2023-04-27: update path to plotting function due to new genome version
 # v1.2 - 2023-03-22: update plotting section due to new genome version
 # v1.1 - 2021-08-26: save filtered table / remove unnecessary graph section
 # v1.0 - 2021-08-24: rename script / turn it into a module / clean code
@@ -69,7 +70,7 @@ data.order_v7 <- data.order
 matplot.data_v7 <- matplot.data
 
 ## For v9 genome
-source("functions/Sm.matplot.data_v4.0.R")
+source("functions/Sm.matplot.data_v5.0.R")
 
 
 
@@ -464,7 +465,7 @@ if (grepl("SM_V7_", myfreq.data.fltr[1,1])) {
     g_vers <- 7
 } else {
     myfreq.data.fltr.r <- myfreq.data.fltr
-    g_vers <- 9
+    g_vers <- 10
 }
 
 # P-value plot
