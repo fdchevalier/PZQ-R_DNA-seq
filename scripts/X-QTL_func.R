@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 # Title: X-QTL_func.R
-# Version: 0.3
+# Version: 0.4
 # Author: Frédéric CHEVALIER <fcheval@txbiomed.org>
 # Created in: 2019-05-15
-# Modified in: 2023-09-24
+# Modified in: 2023-10-15
 
 
 
@@ -11,6 +11,7 @@
 # Comments #
 #==========#
 
+# v0.4 - 2023-10-15: fix detection of QTL limits
 # v0.3 - 2023-09-24: fix gene number detection when generating QTL table
 # v0.2 - 2023-03-22: update plotting command with new arugments in function of reference genome
 # v0.1 - 2021-08-24: remove unnecessary functions / improve functions / clean code
@@ -133,7 +134,7 @@ pk.rpt <- function ( x, sign, trsh, cln.print=NULL, cln.nm.ext=NULL, res.folder,
 qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, expr.nm=NULL, cln.print, res.folder=NULL) {
 
     # Usage
-    ## x            a table with allele frequencies, genotypes, and p-values
+    ## x            a table with allele frequencies, genotypes, and p-values. Must be limited to QTL region.
     ## x.flt        filtered x table
     ## chr          chromosome to filter on
     ## pv.cln       column(s) that contains p-values to filter on
@@ -147,18 +148,8 @@ qtl.tb <- function(x, x.fltr, chr, pv.cln, bf.cor, ann.tb, expr.tb, expr.cln, ex
 
     cat("QTL table: processing variants from ", chr, "...\n", sep="")
 
-    if (length(pv.cln) == 1) {
-        my.qtl <- na.omit(x.fltr[ x.fltr[,pv.cln] <= bf.cor & x.fltr[,1] == chr, 2])
-    } else {
-        my.qtl <- x.fltr[ rowSums(x.fltr[,pv.cln] <= bf.cor, na.rm=TRUE) > 0 & x.fltr[,1] == chr, 2]
-    }
-
-
-    bf.lim <- c(my.qtl[1], my.qtl[length(my.qtl)])
-
-    # Select rows in the QTL region
-    x <- x[ x[,1] == chr & x[,2] >= bf.lim[1] & x[,2] <= bf.lim[2], ]
-    x.fltr <- x.fltr[ x.fltr[,1] == chr & x.fltr[,2] >= bf.lim[1] & x.fltr[,2] <= bf.lim[2], ]
+    x <- x[ x[,1] == chr, ]
+    x.fltr <- x.fltr[ x.fltr[,1] == chr, ]
 
     if(is.null(expr.nm)) { expr.nm <- colnames(expr)[expr.cln] }
 
